@@ -141,7 +141,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .animate-marquee:hover { animation-play-state: paused; }
 
 /* Reveal on scroll */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+
+.reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
 .reveal.revealed { opacity: 1; transform: none; }
 .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal-left.revealed { opacity: 1; transform: none; }
@@ -462,8 +467,18 @@ nav.pill {
 /* =========================================================
    SKILLS
    ========================================================= */
-#skills { padding: 8rem 0; }
-.skills-wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+#skills {
+    display:block !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    padding: 8rem 0;
+}
+.skills-wrap {
+    display:block !important;
+    max-width: 72rem; 
+    margin: 0 auto; 
+    padding: 0 1.5rem;
+}
 .skills-grid { display: grid; gap: 1.25rem; }
 @media(min-width:640px) { .skills-grid { grid-template-columns: repeat(2,1fr); } }
 @media(min-width:1024px) { .skills-grid { grid-template-columns: repeat(3,1fr); } }
@@ -490,17 +505,29 @@ nav.pill {
 
 /* =========================================================
    GALLERY
-   ========================================================= */
-#gallery { padding: 8rem 0; }
+========================================================= */
+
+#gallery {
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    padding: 8rem 0;
+}
+.gallery-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+.gallery-card{
+    display:block !important;
+    opacity:1 !important;
+    border-radius: 1.5rem; overflow: hidden;
+    cursor: pointer; position: relative;
+    transition: box-shadow 0.3s;
+}
 .gallery-wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
-.gallery-grid { display: grid; gap: 1.25rem; }
 @media(min-width:640px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
 @media(min-width:1024px) { .gallery-grid { grid-template-columns: repeat(3,1fr); } }
-.gallery-card {
-  border-radius: 1.5rem; overflow: hidden;
-  cursor: pointer; position: relative;
-  transition: box-shadow 0.3s;
-}
 .gallery-card:hover { box-shadow: var(--shadow-purple); }
 .gallery-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
 .gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
