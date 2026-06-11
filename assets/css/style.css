@@ -167,7 +167,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   position: absolute;
   width: 520px; height: 520px;
   border-radius: 50%;
-  blur: 120px;
+  fill: 120px;
   background: radial-gradient(circle, oklch(0.82 0.14 85 / 0.5), oklch(0.55 0.22 305 / 0.3), transparent 70%);
   filter: blur(120px);
   animation: preloader-glow 2.5s ease-in-out infinite;
