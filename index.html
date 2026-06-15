@@ -175,8 +175,10 @@
           </div>
         </div>
 
-        <!-- Right Photo -->
+        <!-- Right — Collage + Floating Cards -->
         <div class="hero-right">
+
+          <!-- Central photo -->
           <div class="photo-frame">
             <div class="corner corner-tl"></div>
             <div class="corner corner-br"></div>
@@ -184,14 +186,89 @@
               <img src="prof.jpeg" alt="Naveenkumar Samiyappan" />
             </div>
           </div>
-          <div class="stat-card stat-1">
-            <div class="num">7+</div>
-            <div class="lbl">Years of Impact</div>
+
+          <!-- Connection dots SVG overlay -->
+          <svg class="collage-lines" viewBox="0 0 420 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M80 120 Q 100 200 60 280" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="4 6"/>
+            <path d="M340 160 Q 310 240 350 340" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+            <circle cx="80" cy="120" r="3" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="60" cy="280" r="3" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="340" cy="160" r="3" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="350" cy="340" r="3" fill="rgba(201,168,76,0.4)"/>
+          </svg>
+
+          <!-- Avatar bubbles (team / venture icons) -->
+          <div class="avatar-bubble av-1" title="Lordminds">
+            <div class="av-ring"></div>
+            <div class="av-inner">LM</div>
           </div>
-          <div class="stat-card stat-2">
-            <div class="num">5</div>
-            <div class="lbl">Active Ventures</div>
+          <div class="avatar-bubble av-2" title="KnownCore">
+            <div class="av-ring"></div>
+            <div class="av-inner">KC</div>
           </div>
+          <div class="avatar-bubble av-3" title="inidea.pro">
+            <div class="av-ring"></div>
+            <div class="av-inner">ii</div>
+          </div>
+
+          <!-- Floating card 1 – Revenue / impact -->
+          <div class="float-card fc-earnings">
+            <div class="fc-header">
+              <span class="fc-label">Impact Score</span>
+              <span class="fc-dot active"></span>
+            </div>
+            <div class="fc-value">92<span class="fc-unit">%</span></div>
+            <div class="fc-sub">Client satisfaction rate</div>
+            <div class="fc-sparkline">
+              <svg viewBox="0 0 80 28" fill="none">
+                <polyline points="0,22 14,16 28,18 42,10 56,6 70,4 80,2" stroke="rgba(201,168,76,0.7)" stroke-width="1.5" fill="none"/>
+                <polyline points="0,22 14,16 28,18 42,10 56,6 70,4 80,2 80,28 0,28" fill="rgba(201,168,76,0.08)"/>
+              </svg>
+            </div>
+            <div class="fc-trend positive">↑ +20% YoY</div>
+          </div>
+
+          <!-- Floating card 2 – Viewers / reach -->
+          <div class="float-card fc-reach">
+            <div class="fc-icon-row">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="rgba(201,168,76,0.6)"/><path d="M4 7a3 3 0 0 1 6 0" stroke="rgba(201,168,76,0.6)" stroke-width="1.2"/><circle cx="7" cy="7" r="1.5" fill="rgba(201,168,76,0.6)"/></svg>
+              <span class="fc-label">Global Reach</span>
+            </div>
+            <div class="fc-value-sm">1.2k<span class="fc-unit-sm">+ clients</span></div>
+          </div>
+
+          <!-- Floating card 3 – Mini donut stat -->
+          <div class="float-card fc-donut">
+            <div class="fc-donut-wrap">
+              <svg viewBox="0 0 60 60" width="60" height="60">
+                <circle cx="30" cy="30" r="24" stroke="rgba(201,168,76,0.08)" stroke-width="6" fill="none"/>
+                <circle cx="30" cy="30" r="24" stroke="url(#gold-grad)" stroke-width="6" fill="none"
+                  stroke-dasharray="113 150" stroke-linecap="round" transform="rotate(-90 30 30)"/>
+                <defs>
+                  <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#C9A84C"/>
+                    <stop offset="100%" stop-color="#E8C97A"/>
+                  </linearGradient>
+                </defs>
+                <text x="30" y="34" text-anchor="middle" fill="#C9A84C" font-size="9" font-family="Syne,sans-serif" font-weight="800">75%</text>
+              </svg>
+              <div class="fc-donut-info">
+                <div class="fc-donut-title">Growth Rate</div>
+                <div class="fc-donut-sub">Avg across ventures</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Original stat chips reborn as sleek badges -->
+          <div class="stat-badge sb-1">
+            <div class="sb-num">7+</div>
+            <div class="sb-lbl">Years</div>
+          </div>
+          <div class="stat-badge sb-2">
+            <div class="sb-num">5</div>
+            <div class="sb-lbl">Ventures</div>
+          </div>
+
         </div>
       </div>
 
