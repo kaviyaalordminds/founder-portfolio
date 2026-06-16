@@ -1,359 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Naveenkumar Samiyappan — Founder & CEO</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="assets/css/fonts.googleapis.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveenkumar Samiyappan - Founder & CEO</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
 
-  <body>
-
-    <!-- ════════════════════ PRELOADER ════════════════════ -->
-    <div id="preloader">
-      <canvas id="preloader-canvas"></canvas>
-      <div class="preloader-inner">
-        <div class="loader-ring-wrap">
-          <!-- Outer ring SVG -->
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#C9A84C;stop-opacity:1"/>
-                <stop offset="50%" style="stop-color:#E8C97A;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#C9A84C;stop-opacity:0"/>
-              </linearGradient>
-            </defs>
-            <!-- Track -->
-            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1.5"/>
-            <!-- Spinning arc -->
-            <circle cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="1.5"
-              stroke-linecap="round" stroke-dasharray="180 146" transform="rotate(-90 60 60)"/>
-            <!-- Tick marks -->
-            <g stroke="rgba(201,168,76,0.3)" stroke-width="1">
-              <line x1="60" y1="4" x2="60" y2="10"/>
-              <line x1="60" y1="110" x2="60" y2="116"/>
-              <line x1="4" y1="60" x2="10" y2="60"/>
-              <line x1="110" y1="60" x2="116" y2="60"/>
-            </g>
-            <!-- Inner ring -->
-            <circle cx="60" cy="60" r="38" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-          </svg>
-          <!-- Pulsing orb -->
-          <div class="loader-orb">
-            <span class="loader-monogram">NS</span>
-          </div>
+    <!-- 3D Animated Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-container">
+            <div class="preloader-cube">
+                <div class="preloader-face preloader-front">N</div>
+                <div class="preloader-face preloader-back">K</div>
+                <div class="preloader-face preloader-right">S</div>
+                <div class="preloader-face preloader-left">N</div>
+                <div class="preloader-face preloader-top">★</div>
+                <div class="preloader-face preloader-bottom">✦</div>
+            </div>
+            <div class="preloader-text">
+                <span class="preloader-letter">N</span>
+                <span class="preloader-letter">A</span>
+                <span class="preloader-letter">V</span>
+                <span class="preloader-letter">E</span>
+                <span class="preloader-letter">E</span>
+                <span class="preloader-letter">N</span>
+                <span class="preloader-letter">K</span>
+                <span class="preloader-letter">U</span>
+                <span class="preloader-letter">M</span>
+                <span class="preloader-letter">A</span>
+                <span class="preloader-letter">R</span>
+            </div>
+            <div class="preloader-subtitle">Loading Experience...</div>
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar" id="preloader-progress"></div>
+            </div>
         </div>
-
-        <div>
-          <div class="loader-bar-track">
-            <div class="loader-bar-fill" id="loaderBar"></div>
-          </div>
-        </div>
-        <div class="loader-bottom-row">
-          <span class="loader-text">Initialising Experience</span>
-          <span class="loader-percent" id="loaderPct">0%</span>
-        </div>
-      </div>
     </div>
 
-    <!-- ════════════════════ NAV ════════════════════ -->
-    <nav>
-      <div class="nav-logo">
-        <span class="logo-box">NS</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Ventures</a></li>
-        <li><a href="#">Vision</a></li>
-        <li><a href="#">Impact</a></li>
-      </ul>
-      <a href="#" class="nav-cta">Let's Connect</a>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 3D Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#welcome">
+                <div class="logo-3d-container">
+                    <div class="logo-3d">
+                        <span class="logo-letter logo-n">N</span>
+                        <span class="logo-letter logo-s">S</span>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ventures">Ventures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary-custom btn-custom ms-lg-3 mt-2 mt-lg-0">Get in Touch</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- ════════════════════ HERO ════════════════════ -->
-    <section id="hero">
-      <canvas id="bg-canvas"></canvas>
-      <div class="hero-overlay"></div>
-      <div class="hero-scanline"></div>
+        <!-- Hero Section -->
+    <section class="hero-section" id="welcome">
+        <div class="glow" style="top: -200px; left: -200px;"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Founder Image - Left Side -->
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="hero-image-3d-wrapper reveal">
+                        <div class="hero-image-3d">
+                            <div class="hero-image-ring ring-1"></div>
+                            <div class="hero-image-ring ring-2"></div>
+                            <div class="hero-image-ring ring-3"></div>
+                            <div class="hero-image-container">
+                                <img src="assets/images/prof.jpeg" alt="Naveenkumar Samiyappan" class="hero-founder-img">
+                                <div class="hero-image-glare"></div>
+                            </div>
+                            <div class="hero-image-particles">
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="hero-image-shadow"></div>
+                    </div>
+                </div>
 
-      <div class="hero-inner">
-        <!-- Left -->
-        <div class="hero-left">
-          <div class="hero-eyebrow">
-            <div class="eyebrow-line"></div>
-            <span class="eyebrow-text">Founder & CEO · Lordminds Pvt Ltd</span>
-          </div>
+                <!-- Content - Right Side -->
+                <div class="col-lg-7 hero-content">
+                    <span class="chapter-label reveal">Founder & CEO</span>
+                    <h1 class="hero-title reveal">
+                        <em>Naveenkumar</em><br>Samiyappan
+                    </h1>
+                    <p class="hero-subtitle reveal">
+                        Founder & CEO of LordMinds Pvt Ltd. A visionary entrepreneur and digital growth strategist with 7+ years of experience transforming businesses through data-driven and creative solutions in the ever-evolving world of digital marketing.
+                    </p>
+                    <div class="reveal">
+                        <a href="#about" class="btn btn-primary-custom btn-custom me-3">Read Profile</a>
+                        <a href="#ventures" class="btn btn-outline-custom btn-custom">My Ventures</a>
+                    </div>
+                </div>
 
-          <h1 class="hero-name">
-            Naveen<span>kumar</span><br>Samiyappan
-          </h1>
-          <p class="hero-title">Visionary Entrepreneur &amp; Digital Growth Strategist</p>
-
-          <h2 class="hero-tagline">
-            Where <span class="accent">Creative Storytelling</span><br>
-            Meets Smart Technology.
-          </h2>
-          <p class="hero-mission">
-            Building high-impact digital ecosystems that transform brands, drive measurable growth,
-            and unlock the full potential of businesses — across 7+ years, multiple ventures, and a global vision.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#" class="btn-primary">
-              Explore My Vision
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#" class="btn-secondary">
-              Watch Story
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5.5" stroke="currentColor"/><path d="M5 4l3 2-3 2V4z" fill="currentColor"/></svg>
-            </a>
-          </div>
-
-          <!-- VENTURES REDESIGN -->
-          <div class="ventures-strip">
-            <p class="ventures-label">Ventures &amp; Leadership</p>
-            <div class="ventures-grid">
-              <div class="venture-row">
-                <div class="v-logo-box"><div class="v-logo-icon">LM</div></div>
-                <div class="v-info">
-                  <span class="v-name">Lordminds Pvt Ltd</span>
-                  <div class="v-bar-track"><div class="v-bar-fill" style="--fill-w:92%"></div></div>
+                <!-- Mobile Image -->
+                <div class="col-12 d-lg-none text-center mt-4">
+                    <div class="hero-image-mobile reveal">
+                        <img src="assets/images/prof.jpeg" alt="Naveenkumar Samiyappan" class="hero-founder-img-mobile">
+                    </div>
                 </div>
-                <div class="v-right">
-                  <span class="v-role-badge founder"><span class="v-dot founder"></span>Founder & CEO</span>
-                  <span class="v-sector">Digital Agency</span>
-                </div>
-              </div>
-              <div class="venture-row">
-                <div class="v-logo-box"><div class="v-logo-icon">ii</div></div>
-                <div class="v-info">
-                  <span class="v-name">inidea.pro</span>
-                  <div class="v-bar-track"><div class="v-bar-fill" style="--fill-w:80%"></div></div>
-                </div>
-                <div class="v-right">
-                  <span class="v-role-badge founder"><span class="v-dot founder"></span>Founder & CEO</span>
-                  <span class="v-sector">SaaS · Ideas Platform</span>
-                </div>
-              </div>
-              <div class="venture-row">
-                <div class="v-logo-box"><div class="v-logo-icon">KC</div></div>
-                <div class="v-info">
-                  <span class="v-name">KnownCore Edutech</span>
-                  <div class="v-bar-track"><div class="v-bar-fill" style="--fill-w:75%"></div></div>
-                </div>
-                <div class="v-right">
-                  <span class="v-role-badge founder"><span class="v-dot founder"></span>Founder & CEO</span>
-                  <span class="v-sector">EdTech</span>
-                </div>
-              </div>
-              <div class="venture-row">
-                <div class="v-logo-box"><div class="v-logo-icon">KX</div></div>
-                <div class="v-info">
-                  <span class="v-name">Khonexiaa Innovation</span>
-                  <div class="v-bar-track"><div class="v-bar-fill" style="--fill-w:60%"></div></div>
-                </div>
-                <div class="v-right">
-                  <span class="v-role-badge cofounder"><span class="v-dot cofounder"></span>Co-Founder</span>
-                  <span class="v-sector">Innovation Lab</span>
-                </div>
-              </div>
-              <div class="venture-row">
-                <div class="v-logo-box"><div class="v-logo-icon">MC</div></div>
-                <div class="v-info">
-                  <span class="v-name">Muster Construct</span>
-                  <div class="v-bar-track"><div class="v-bar-fill" style="--fill-w:55%"></div></div>
-                </div>
-                <div class="v-right">
-                  <span class="v-role-badge cofounder"><span class="v-dot cofounder"></span>Co-Founder</span>
-                  <span class="v-sector">Construction</span>
-                </div>
-              </div>
             </div>
-          </div>
+
+            <!-- Hero Stats Section -->
+            <div class="row hero-stats-row mt-5 pt-5">
+                <div class="col-6 col-md-3 reveal">
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-icon">⏱️</div>
+                        <div class="hero-stat-number">
+                            <span class="counter" data-target="7">0</span>+
+                        </div>
+                        <div class="hero-stat-label">Years Experience</div>
+                        <div class="hero-stat-glow"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal">
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-icon">🏢</div>
+                        <div class="hero-stat-number">
+                            <span class="counter" data-target="5">0</span>
+                        </div>
+                        <div class="hero-stat-label">Companies Founded</div>
+                        <div class="hero-stat-glow"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal">
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-icon">👥</div>
+                        <div class="hero-stat-number">
+                            <span class="counter" data-target="20">0</span>+
+                        </div>
+                        <div class="hero-stat-label">Team Members</div>
+                        <div class="hero-stat-glow"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal">
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-icon">🎯</div>
+                        <div class="hero-stat-number">
+                            <span class="counter" data-target="4">0</span>
+                        </div>
+                        <div class="hero-stat-label">Industry Sectors</div>
+                        <div class="hero-stat-glow"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Right — Collage + Floating Cards -->
-        <div class="hero-right">
-
-          <!-- Central photo -->
-          <div class="photo-frame">
-            <div class="corner corner-tl"></div>
-            <div class="corner corner-br"></div>
-            <div class="photo-inner">
-              <img src="prof.jpeg" alt="Naveenkumar Samiyappan" />
-            </div>
-          </div>
-
-          <!-- Connection dots SVG overlay -->
-          <svg class="collage-lines" viewBox="0 0 420 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M80 120 Q 100 200 60 280" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="4 6"/>
-            <path d="M340 160 Q 310 240 350 340" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
-            <circle cx="80" cy="120" r="3" fill="rgba(201,168,76,0.5)"/>
-            <circle cx="60" cy="280" r="3" fill="rgba(201,168,76,0.5)"/>
-            <circle cx="340" cy="160" r="3" fill="rgba(201,168,76,0.5)"/>
-            <circle cx="350" cy="340" r="3" fill="rgba(201,168,76,0.4)"/>
-          </svg>
-
-          <!-- Avatar bubbles (team / venture icons) -->
-          <div class="avatar-bubble av-1" title="Lordminds">
-            <div class="av-ring"></div>
-            <div class="av-inner">LM</div>
-          </div>
-          <div class="avatar-bubble av-2" title="KnownCore">
-            <div class="av-ring"></div>
-            <div class="av-inner">KC</div>
-          </div>
-          <div class="avatar-bubble av-3" title="inidea.pro">
-            <div class="av-ring"></div>
-            <div class="av-inner">ii</div>
-          </div>
-
-          <!-- Floating card 1 – Revenue / impact -->
-          <div class="float-card fc-earnings">
-            <div class="fc-header">
-              <span class="fc-label">Impact Score</span>
-              <span class="fc-dot active"></span>
-            </div>
-            <div class="fc-value">92<span class="fc-unit">%</span></div>
-            <div class="fc-sub">Client satisfaction rate</div>
-            <div class="fc-sparkline">
-              <svg viewBox="0 0 80 28" fill="none">
-                <polyline points="0,22 14,16 28,18 42,10 56,6 70,4 80,2" stroke="rgba(201,168,76,0.7)" stroke-width="1.5" fill="none"/>
-                <polyline points="0,22 14,16 28,18 42,10 56,6 70,4 80,2 80,28 0,28" fill="rgba(201,168,76,0.08)"/>
-              </svg>
-            </div>
-            <div class="fc-trend positive">↑ +20% YoY</div>
-          </div>
-
-          <!-- Floating card 2 – Viewers / reach -->
-          <div class="float-card fc-reach">
-            <div class="fc-icon-row">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" stroke="rgba(201,168,76,0.6)"/><path d="M4 7a3 3 0 0 1 6 0" stroke="rgba(201,168,76,0.6)" stroke-width="1.2"/><circle cx="7" cy="7" r="1.5" fill="rgba(201,168,76,0.6)"/></svg>
-              <span class="fc-label">Global Reach</span>
-            </div>
-            <div class="fc-value-sm">1.2k<span class="fc-unit-sm">+ clients</span></div>
-          </div>
-
-          <!-- Floating card 3 – Mini donut stat -->
-          <div class="float-card fc-donut">
-            <div class="fc-donut-wrap">
-              <svg viewBox="0 0 60 60" width="60" height="60">
-                <circle cx="30" cy="30" r="24" stroke="rgba(201,168,76,0.08)" stroke-width="6" fill="none"/>
-                <circle cx="30" cy="30" r="24" stroke="url(#gold-grad)" stroke-width="6" fill="none"
-                  stroke-dasharray="113 150" stroke-linecap="round" transform="rotate(-90 30 30)"/>
-                <defs>
-                  <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#C9A84C"/>
-                    <stop offset="100%" stop-color="#E8C97A"/>
-                  </linearGradient>
-                </defs>
-                <text x="30" y="34" text-anchor="middle" fill="#C9A84C" font-size="9" font-family="Syne,sans-serif" font-weight="800">75%</text>
-              </svg>
-              <div class="fc-donut-info">
-                <div class="fc-donut-title">Growth Rate</div>
-                <div class="fc-donut-sub">Avg across ventures</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Original stat chips reborn as sleek badges -->
-          <div class="stat-badge sb-1">
-            <div class="sb-num">7+</div>
-            <div class="sb-lbl">Years</div>
-          </div>
-          <div class="stat-badge sb-2">
-            <div class="sb-num">5</div>
-            <div class="sb-lbl">Ventures</div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="scroll-hint">
-        <div class="scroll-line"></div>
-        <span class="scroll-text">Scroll</span>
-      </div>
     </section>
 
-    <!-- ════════════════════ FOOTER ════════════════════ -->
-    <footer>
-      <div class="footer-border"></div>
-      <div class="footer-glow"></div>
-      <div class="footer-cta-bar">
-        <div>
-          <div class="footer-cta-text">Ready to build<br>something <span>remarkable?</span></div>
-          <p class="footer-cta-sub">Whether you're scaling a startup, building a brand, or seeking a strategic partner — let's create impact together.</p>
+<!-- About Section -->
+    <section class="section-padding section-dark" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Content - Left Side -->
+                <div class="col-lg-7 order-lg-1 order-2">
+                    <span class="chapter-label reveal">About Me</span>
+                    <h2 class="section-title reveal">
+                        Visionary <em>Entrepreneur</em> & Digital Growth Strategist
+                    </h2>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Naveenkumar S is a visionary entrepreneur and digital growth strategist with 7 years of experience in the ever-evolving world of digital marketing. He has built successful agencies from the ground up, helping businesses transform their online presence through data-driven and creative solutions.
+                    </p>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        At the heart of Naveenkumar's success is his ability to leverage the latest technology to drive results. He believes that the future of business belongs to those who can marry <em style="color: var(--accent-cyan);">"Creative Storytelling"</em> with <em style="color: var(--accent-cyan);">"Smart Technology."</em>
+                    </p>
+                    <div class="reveal">
+                        <a href="#ventures" class="btn btn-primary-custom btn-custom">Explore My Ventures</a>
+                    </div>
+                </div>
+                <!-- Founder Image - Right Side -->
+                <div class="col-lg-5 order-lg-2 order-1 reveal">
+                    <div class="founder-image-wrapper">
+                        <img src="assets/images/prof1.jpeg" alt="Naveenkumar Samiyappan" class="founder-image">
+                        <div class="founder-image-glow"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="mailto:hello@lordminds.in" class="btn-primary" style="flex-shrink:0;">
-          Start a Conversation
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+    </section>
 
-      <div class="footer-main">
-        <div class="footer-brand">
-          <div class="brand-logo">NS<span>.</span></div>
-          <div class="brand-tagline">Naveenkumar Samiyappan</div>
-          <p>A visionary entrepreneur building digital ecosystems that merge creativity with technology to drive exponential growth across industries.</p>
-          <div class="social-row">
-            <a href="#" class="social-btn" title="LinkedIn">in</a>
-            <a href="#" class="social-btn" title="Twitter/X">𝕏</a>
-            <a href="#" class="social-btn" title="Instagram">ig</a>
-            <a href="#" class="social-btn" title="YouTube">yt</a>
-          </div>
+    <!-- Ventures Section -->
+    <section class="section-padding" id="ventures">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="chapter-label reveal">My Ventures</span>
+                    <h2 class="section-title reveal">
+                        Companies <em>Founded</em> & Co-Founded
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Founder Cards Row -->
+            <div class="row g-4 mt-2">
+                <div class="col-12">
+                    <h4 class="venture-category-title reveal" style="color: var(--accent-green); margin-bottom: 1.5rem; font-weight: 700;">
+                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; margin-right: 10px;"></span>
+                        Founded By Me
+                    </h4>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="feature-card venture-card">
+                        <div class="feature-icon">🏢</div>
+                        <h3 class="feature-title">LordMinds Pvt Ltd</h3>
+                        <p class="feature-text">Founder & CEO. A digital marketing agency built from the ground up, helping businesses transform their online presence through data-driven and creative solutions.</p>
+                        <span class="venture-badge founder-badge">Founder</span>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="feature-card venture-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3 class="feature-title">Inidea.pro</h3>
+                        <p class="feature-text">Founder. An innovative digital platform focused on delivering cutting-edge solutions for modern businesses and creative professionals.</p>
+                        <span class="venture-badge founder-badge">Founder</span>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="feature-card venture-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3 class="feature-title">KnownCore Edutech</h3>
+                        <p class="feature-text">Founder. An educational technology venture dedicated to transforming learning experiences through technology and innovative teaching methodologies.</p>
+                        <span class="venture-badge founder-badge">Founder</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Co-Founder Cards Row -->
+            <div class="row g-4 mt-4">
+                <div class="col-12">
+                    <h4 class="venture-category-title reveal" style="color: var(--accent-cyan); margin-bottom: 1.5rem; font-weight: 700;">
+                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; margin-right: 10px;"></span>
+                        Co-Founded By Me
+                    </h4>
+                </div>
+                <div class="col-md-6 reveal">
+                    <div class="feature-card venture-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Khonexiaa Innovation</h3>
+                        <p class="feature-text">Co-Founder. A forward-thinking innovation hub driving technological advancement and creative problem-solving for businesses.</p>
+                        <span class="venture-badge cofounder-badge">Co-Founder</span>
+                    </div>
+                </div>
+                <div class="col-md-6 reveal">
+                    <div class="feature-card venture-card">
+                        <div class="feature-icon">🏗️</div>
+                        <h3 class="feature-title">Muster Construct</h3>
+                        <p class="feature-text">Co-Founder. A construction and infrastructure venture focused on building sustainable and innovative structures for the future.</p>
+                        <span class="venture-badge cofounder-badge">Co-Founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="section-padding section-dark" id="expertise">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="chapter-label reveal">Industry Impact & Expertise</span>
+                    <h2 class="section-title reveal">
+                        Areas of <em>Expertise</em>
+                    </h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
+                        Having navigated the digital landscape for nearly a decade, Naveenkumar has a wealth of experience across diverse sectors, including Healthcare, Real Estate, E-commerce, and Political Campaigns.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Vision & Mission</a></li>
-            <li><a href="#">Industry Impact</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
+        <!-- 3D Scrolling Expertise Cards -->
+        <div class="expertise-3d-container">
+            <div class="expertise-3d-track" id="expertise-track">
+                <!-- Card 1 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">📈</div>
+                        <h3 class="expertise-3d-title">Performance Marketing</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>Delivering high Return on Investment (ROI) through precision-targeted Google Ads and SEO strategies that drive measurable business growth.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Google Ads</span>
+                            <span>SEO</span>
+                            <span>Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">🎨</div>
+                        <h3 class="expertise-3d-title">Brand Architecture</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>Building strong, recognizable digital identities for emerging brands that stand out in competitive markets.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Branding</span>
+                            <span>Identity</span>
+                            <span>Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">💻</div>
+                        <h3 class="expertise-3d-title">Full-Stack Digital Solutions</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>From designing sales-boosting websites and apps to executing viral social media campaigns that capture audience attention.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Web Dev</span>
+                            <span>App Dev</span>
+                            <span>Social Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">📊</div>
+                        <h3 class="expertise-3d-title">Data Analytics</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>Transforming raw data into actionable insights that drive strategic decision-making and business optimization.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Big Data</span>
+                            <span>BI Tools</span>
+                            <span>Reporting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">🚀</div>
+                        <h3 class="expertise-3d-title">Growth Hacking</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>Implementing innovative strategies to rapidly scale businesses and acquire users through creative, low-cost tactics.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Viral</span>
+                            <span>A/B Testing</span>
+                            <span>Funnels</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="expertise-3d-card">
+                    <div class="expertise-3d-front">
+                        <div class="expertise-3d-icon">🤝</div>
+                        <h3 class="expertise-3d-title">Strategic Consulting</h3>
+                        <div class="expertise-3d-shine"></div>
+                    </div>
+                    <div class="expertise-3d-back">
+                        <p>Providing expert guidance to businesses across Healthcare, Real Estate, E-commerce, and Political Campaigns.</p>
+                        <div class="expertise-3d-skills">
+                            <span>Strategy</span>
+                            <span>Consulting</span>
+                            <span>Planning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Ventures</h4>
-          <div style="display:flex;flex-direction:column;">
-            <div class="venture-item"><span class="venture-name">Lordminds Pvt Ltd</span><span class="venture-role">Founder & CEO</span></div>
-            <div class="venture-item"><span class="venture-name">inidea.pro</span><span class="venture-role">Founder & CEO</span></div>
-            <div class="venture-item"><span class="venture-name">KnownCore Edutech</span><span class="venture-role">Founder & CEO</span></div>
-            <div class="venture-item"><span class="venture-name">Khonexiaa Innovation</span><span class="venture-role">Co-Founder</span></div>
-            <div class="venture-item"><span class="venture-name">Muster Construct</span><span class="venture-role">Co-Founder</span></div>
-          </div>
+        <!-- Scroll Indicator -->
+        <div class="expertise-scroll-hint">
+            <span>Scroll to explore</span>
+            <div class="expertise-scroll-arrow">→</div>
         </div>
+    </section>
 
-        <div class="footer-col">
-          <h4>Expertise</h4>
-          <ul>
-            <li><a href="#">Performance Marketing</a></li>
-            <li><a href="#">Brand Architecture</a></li>
-            <li><a href="#">Digital Strategy</a></li>
-            <li><a href="#">Google Ads & SEO</a></li>
-            <li><a href="#">Team Leadership</a></li>
-            <li><a href="#">EdTech Ventures</a></li>
-          </ul>
-        </div>
-      </div>
+    <!-- Education & Leadership Section -->
+    <section class="section-padding" id="education">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="chapter-label reveal">Leadership & Education</span>
+                    <h2 class="section-title reveal">
+                        Academic <em>Excellence</em> & Social Responsibility
+                    </h2>
+                </div>
+            </div>
 
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2024 <span>Naveenkumar Samiyappan</span>. All rights reserved. Crafted with purpose.</p>
-        <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Sitemap</a>
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3 class="feature-title">Educational Background</h3>
+                        <p class="feature-text">Naveenkumar bridges the gap between traditional business principles and modern digital trends with his academic background:</p>
+                        <ul class="custom-list mt-3">
+                            <li>MBA in Marketing & Finance from Nandha Engineering College</li>
+                            <li>B.Com from Gobi Arts & Science College</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3 class="feature-title">Leadership & Social Impact</h3>
+                        <p class="feature-text">Beyond his business acumen, Naveenkumar is a recognized leader and social advocate:</p>
+                        <ul class="custom-list mt-3">
+                            <li><strong>Team Mentor:</strong> Effectively manages a global team of over 20 freelancers</li>
+                            <li><strong>Award-Winning Activist:</strong> Recipient of the Best Social Activist Award</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding section-dark" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <span class="chapter-label reveal">Get in Touch</span>
+                    <h2 class="section-title reveal">
+                        Let's <em>Connect</em>
+                    </h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
+                        Interested in collaborating or learning more about my ventures? Reach out and let's create something extraordinary together.
+                    </p>
+                    <div class="reveal">
+                        <a href="mailto:naveenkumar@lordminds.com" class="btn btn-primary-custom btn-custom me-3">Send Email</a>
+                        <a href="#" class="btn btn-outline-custom btn-custom">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">Naveenkumar Samiyappan</div>
+                    <p class="footer-text">Founder & CEO of LordMinds Pvt Ltd. A visionary entrepreneur and digital growth strategist transforming businesses through data-driven and creative solutions.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Ventures</h5>
+                        <a href="#">LordMinds</a>
+                        <a href="#">Inidea.pro</a>
+                        <a href="#">KnownCore</a>
+                        <a href="#">Khonexiaa</a>
+                        <a href="#">Muster Construct</a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Expertise</h5>
+                        <a href="#">Performance Marketing</a>
+                        <a href="#">Brand Architecture</a>
+                        <a href="#">Digital Solutions</a>
+                        <a href="#">SEO & Google Ads</a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <a href="#welcome">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#ventures">Ventures</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Connect</h5>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Email</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> Naveenkumar Samiyappan. All rights reserved. </p>
+            </div>
+        </div>
     </footer>
 
-    <script src="assets/js/three.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-  </body>
+</body>
 </html>
