@@ -9,20 +9,64 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-<base target="_blank">
+    <base target="_blank">
 </head>
 <body>
 
-    <!-- 3D Animated Preloader -->
+    <!-- ============================================
+         3D ZIG-ZAG PARALLAX BACKGROUND
+         ============================================ -->
+    <div class="parallax-zigzag-container" id="zigzag-bg">
+        <div class="parallax-zigzag-layer">
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="zigzag-line"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+            <div class="depth-cube"></div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         3D ANIMATED PRELOADER
+         ============================================ -->
     <div class="preloader" id="preloader">
+        <div class="preloader-bg-grid"></div>
+        <div class="preloader-particles">
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+        </div>
+        <div class="preloader-orbit">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+        </div>
         <div class="preloader-container">
             <div class="preloader-cube">
                 <div class="preloader-face preloader-front">N</div>
                 <div class="preloader-face preloader-back">K</div>
                 <div class="preloader-face preloader-right">S</div>
                 <div class="preloader-face preloader-left">N</div>
-                <div class="preloader-face preloader-top">★</div>
-                <div class="preloader-face preloader-bottom">✦</div>
+                <div class="preloader-face preloader-top">&#9733;</div>
+                <div class="preloader-face preloader-bottom">&#10022;</div>
             </div>
             <div class="preloader-text">
                 <span class="preloader-letter">N</span>
@@ -44,9 +88,17 @@
         </div>
     </div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- ============================================
+         BACK TO TOP BUTTON (Left Bottom)
+         ============================================ -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        <svg class="back-to-top-progress" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" id="progressCircle"></circle>
+        </svg>
+    </div>
 
     <!-- Particle Background -->
     <div class="particles" id="particles"></div>
@@ -87,7 +139,6 @@
         <div class="glow" style="top: -200px; left: -200px;"></div>
         <div class="container">
             <div class="row align-items-center">
-                <!-- Founder Image - Left Side -->
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="hero-image-3d-wrapper reveal">
                         <div class="hero-image-3d">
@@ -106,68 +157,50 @@
                         <div class="hero-image-shadow"></div>
                     </div>
                 </div>
-
-                <!-- Content - Right Side -->
                 <div class="col-lg-7 hero-content">
                     <span class="chapter-label reveal">Founder & CEO</span>
-                    <h1 class="hero-title reveal">
-                        <em>Naveenkumar</em><br>Samiyappan
-                    </h1>
-                    <p class="hero-subtitle reveal">
-                        Founder & CEO of LordMinds Pvt Ltd. A visionary entrepreneur and digital growth strategist with 7+ years of experience transforming businesses through data-driven and creative solutions.
-                    </p>
+                    <h1 class="hero-title reveal"><em>Naveenkumar</em><br>Samiyappan</h1>
+                    <p class="hero-subtitle reveal">Founder & CEO of LordMinds Pvt Ltd. A visionary entrepreneur and digital growth strategist with 7+ years of experience transforming businesses through data-driven and creative solutions.</p>
                     <div class="reveal">
                         <a href="#about" class="btn btn-primary-custom btn-custom me-3">Read Profile</a>
                         <a href="#ventures" class="btn btn-outline-custom btn-custom">My Ventures</a>
                     </div>
                 </div>
-
-                <!-- Mobile Image -->
                 <div class="col-12 d-lg-none text-center mt-4">
                     <div class="hero-image-mobile reveal">
                         <img src="assets/images/prof.jpeg" alt="Naveenkumar Samiyappan" class="hero-founder-img-mobile">
                     </div>
                 </div>
             </div>
-
-            <!-- Hero Stats Section -->
             <div class="row hero-stats-row mt-5 pt-5">
                 <div class="col-6 col-md-3 reveal">
                     <div class="hero-stat-item">
-                        <div class="hero-stat-icon">⏱️</div>
-                        <div class="hero-stat-number">
-                            <span class="counter" data-target="7">0</span>+
-                        </div>
+                        <div class="hero-stat-icon">&#9201;</div>
+                        <div class="hero-stat-number"><span class="counter" data-target="7">0</span>+</div>
                         <div class="hero-stat-label">Years Experience</div>
                         <div class="hero-stat-glow"></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3 reveal">
                     <div class="hero-stat-item">
-                        <div class="hero-stat-icon">🏢</div>
-                        <div class="hero-stat-number">
-                            <span class="counter" data-target="5">0</span>
-                        </div>
+                        <div class="hero-stat-icon">&#127970;</div>
+                        <div class="hero-stat-number"><span class="counter" data-target="5">0</span></div>
                         <div class="hero-stat-label">Companies Founded</div>
                         <div class="hero-stat-glow"></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3 reveal">
                     <div class="hero-stat-item">
-                        <div class="hero-stat-icon">👥</div>
-                        <div class="hero-stat-number">
-                            <span class="counter" data-target="20">0</span>+
-                        </div>
+                        <div class="hero-stat-icon">&#128101;</div>
+                        <div class="hero-stat-number"><span class="counter" data-target="20">0</span>+</div>
                         <div class="hero-stat-label">Team Members</div>
                         <div class="hero-stat-glow"></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3 reveal">
                     <div class="hero-stat-item">
-                        <div class="hero-stat-icon">🎯</div>
-                        <div class="hero-stat-number">
-                            <span class="counter" data-target="50">0</span>+
-                        </div>
+                        <div class="hero-stat-icon">&#127919;</div>
+                        <div class="hero-stat-number"><span class="counter" data-target="50">0</span>+</div>
                         <div class="hero-stat-label">Clients Served</div>
                         <div class="hero-stat-glow"></div>
                     </div>
@@ -176,47 +209,59 @@
         </div>
     </section>
 
+    <!-- ==================== MARQUEE 1 ==================== -->
+    <div class="marquee-divider"></div>
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-dot"></span>Performance Marketing</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Brand Strategy</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Web Development</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>SEO & Content</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Social Media</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Data Analytics</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Google Ads</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Meta Ads</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>E-commerce</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Innovation</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Performance Marketing</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Brand Strategy</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Web Development</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>SEO & Content</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Social Media</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Data Analytics</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Google Ads</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Meta Ads</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>E-commerce</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Innovation</div>
+        </div>
+    </div>
+    <div class="marquee-divider"></div>
+
     <!-- ==================== ABOUT SECTION ==================== -->
     <section class="section-padding section-dark" id="about">
         <div class="container">
             <div class="row align-items-center">
-                <!-- Content - Left Side -->
                 <div class="col-lg-7 order-lg-1 order-2">
                     <span class="chapter-label reveal">About Me</span>
-                    <h2 class="section-title reveal">
-                        Visionary <em>Entrepreneur</em> & Digital Growth Strategist
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                        Naveenkumar S is a visionary entrepreneur and digital growth strategist with 7 years of experience in the ever-evolving world of digital marketing. He has built successful agencies from the ground up, helping businesses transform their online presence through data-driven and creative solutions.
-                    </p>
-                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                        At the heart of Naveenkumar's success is his ability to leverage the latest technology to drive results. He believes that the future of business belongs to those who can marry <em style="color: var(--accent-cyan);">"Creative Storytelling"</em> with <em style="color: var(--accent-cyan);">"Smart Technology."</em>
-                    </p>
+                    <h2 class="section-title reveal">Visionary <em>Entrepreneur</em> & Digital Growth Strategist</h2>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">Naveenkumar S is a visionary entrepreneur and digital growth strategist with 7 years of experience in the ever-evolving world of digital marketing. He has built successful agencies from the ground up, helping businesses transform their online presence through data-driven and creative solutions.</p>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">At the heart of Naveenkumar's success is his ability to leverage the latest technology to drive results. He believes that the future of business belongs to those who can marry <em style="color: var(--accent-cyan);">"Creative Storytelling"</em> with <em style="color: var(--accent-cyan);">"Smart Technology."</em></p>
                     <div class="row g-3 mt-3 reveal">
                         <div class="col-md-6">
                             <div class="about-highlight">
-                                <span class="about-highlight-icon">🎓</span>
-                                <div>
-                                    <h5>MBA Marketing & Finance</h5>
-                                    <p>Nandha Engineering College</p>
-                                </div>
+                                <span class="about-highlight-icon">&#127891;</span>
+                                <div><h5>MBA Marketing & Finance</h5><p>Nandha Engineering College</p></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="about-highlight">
-                                <span class="about-highlight-icon">🏆</span>
-                                <div>
-                                    <h5>Best Social Activist Award</h5>
-                                    <p>Recognized for community impact</p>
-                                </div>
+                                <span class="about-highlight-icon">&#127942;</span>
+                                <div><h5>Best Social Activist Award</h5><p>Recognized for community impact</p></div>
                             </div>
                         </div>
                     </div>
-                    <div class="reveal mt-4">
-                        <a href="#ventures" class="btn btn-primary-custom btn-custom">Explore My Ventures</a>
-                    </div>
+                    <div class="reveal mt-4"><a href="#ventures" class="btn btn-primary-custom btn-custom">Explore My Ventures</a></div>
                 </div>
-                <!-- Founder Image - Right Side -->
                 <div class="col-lg-5 order-lg-2 order-1 reveal">
                     <div class="founder-image-wrapper">
                         <img src="assets/images/prof1.jpeg" alt="Naveenkumar Samiyappan" class="founder-image">
@@ -233,23 +278,18 @@
             <div class="row">
                 <div class="col-lg-8">
                     <span class="chapter-label reveal">My Ventures</span>
-                    <h2 class="section-title reveal">
-                        Companies <em>Founded</em> & Co-Founded
-                    </h2>
+                    <h2 class="section-title reveal">Companies <em>Founded</em> & Co-Founded</h2>
                 </div>
             </div>
-
-            <!-- Founder Cards Row -->
             <div class="row g-4 mt-2">
                 <div class="col-12">
                     <h4 class="venture-category-title reveal" style="color: var(--accent-green); margin-bottom: 1.5rem; font-weight: 700;">
-                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; margin-right: 10px;"></span>
-                        Founded By Me
+                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; margin-right: 10px;"></span>Founded By Me
                     </h4>
                 </div>
                 <div class="col-md-4 reveal">
                     <div class="feature-card venture-card">
-                        <div class="feature-icon">🏢</div>
+                        <div class="feature-icon">&#127970;</div>
                         <h3 class="feature-title">LordMinds Pvt Ltd</h3>
                         <p class="feature-text">Founder & CEO. A digital marketing agency built from the ground up, helping businesses transform their online presence through data-driven and creative solutions.</p>
                         <span class="venture-badge founder-badge">Founder</span>
@@ -257,7 +297,7 @@
                 </div>
                 <div class="col-md-4 reveal">
                     <div class="feature-card venture-card">
-                        <div class="feature-icon">🌐</div>
+                        <div class="feature-icon">&#127760;</div>
                         <h3 class="feature-title">Inidea.pro</h3>
                         <p class="feature-text">Founder. An innovative digital platform focused on delivering cutting-edge solutions for modern businesses and creative professionals.</p>
                         <span class="venture-badge founder-badge">Founder</span>
@@ -265,25 +305,22 @@
                 </div>
                 <div class="col-md-4 reveal">
                     <div class="feature-card venture-card">
-                        <div class="feature-icon">🎓</div>
+                        <div class="feature-icon">&#127891;</div>
                         <h3 class="feature-title">KnownCore Edutech</h3>
                         <p class="feature-text">Founder. An educational technology venture dedicated to transforming learning experiences through technology and innovative teaching methodologies.</p>
                         <span class="venture-badge founder-badge">Founder</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Co-Founder Cards Row -->
             <div class="row g-4 mt-4">
                 <div class="col-12">
                     <h4 class="venture-category-title reveal" style="color: var(--accent-cyan); margin-bottom: 1.5rem; font-weight: 700;">
-                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; margin-right: 10px;"></span>
-                        Co-Founded By Me
+                        <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; margin-right: 10px;"></span>Co-Founded By Me
                     </h4>
                 </div>
                 <div class="col-md-6 reveal">
                     <div class="feature-card venture-card">
-                        <div class="feature-icon">⚡</div>
+                        <div class="feature-icon">&#9889;</div>
                         <h3 class="feature-title">Khonexiaa Innovation</h3>
                         <p class="feature-text">Co-Founder. A forward-thinking innovation hub driving technological advancement and creative problem-solving for businesses.</p>
                         <span class="venture-badge cofounder-badge">Co-Founder</span>
@@ -291,7 +328,7 @@
                 </div>
                 <div class="col-md-6 reveal">
                     <div class="feature-card venture-card">
-                        <div class="feature-icon">🏗️</div>
+                        <div class="feature-icon">&#127959;</div>
                         <h3 class="feature-title">Muster Construct</h3>
                         <p class="feature-text">Co-Founder. A construction and infrastructure venture focused on building sustainable and innovative structures for the future.</p>
                         <span class="venture-badge cofounder-badge">Co-Founder</span>
@@ -301,24 +338,42 @@
         </div>
     </section>
 
+    <!-- ==================== MARQUEE 2 ==================== -->
+    <div class="marquee-divider"></div>
+    <div class="marquee-section">
+        <div class="marquee-track marquee-track-reverse">
+            <div class="marquee-item"><span class="marquee-dot"></span>LordMinds Pvt Ltd</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Inidea.pro</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>KnownCore Edutech</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Khonexiaa Innovation</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Muster Construct</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Digital Transformation</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech Solutions</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Innovation Hub</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>LordMinds Pvt Ltd</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Inidea.pro</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>KnownCore Edutech</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Khonexiaa Innovation</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Muster Construct</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Digital Transformation</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech Solutions</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Innovation Hub</div>
+        </div>
+    </div>
+    <div class="marquee-divider"></div>
+
     <!-- ==================== FOUNDER JOURNEY / TIMELINE ==================== -->
     <section class="section-padding section-dark" id="journey">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <span class="chapter-label reveal">Founder Journey</span>
-                    <h2 class="section-title reveal">
-                        The Road to <em>Success</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        From humble beginnings to building multiple ventures, every step shaped the visionary leader Naveenkumar is today.
-                    </p>
+                    <h2 class="section-title reveal">The Road to <em>Success</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">From humble beginnings to building multiple ventures, every step shaped the visionary leader Naveenkumar is today.</p>
                 </div>
             </div>
-
             <div class="timeline-container">
                 <div class="timeline-line"></div>
-                
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -327,7 +382,6 @@
                         <p class="timeline-text">Began as a freelance digital marketer, learning the ropes of SEO, Google Ads, and social media strategy while pursuing B.Com.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -336,7 +390,6 @@
                         <p class="timeline-text">Pursued MBA in Marketing & Finance from Nandha Engineering College, bridging traditional business principles with digital innovation.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -345,7 +398,6 @@
                         <p class="timeline-text">Launched LordMinds as a full-service digital marketing agency, building it from scratch into a recognized brand.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -354,7 +406,6 @@
                         <p class="timeline-text">Founded Inidea.pro and KnownCore Edutech, diversifying into digital platforms and educational technology sectors.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -363,7 +414,6 @@
                         <p class="timeline-text">Ventured into innovation and construction by co-founding Khonexiaa Innovation and Muster Construct.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -382,62 +432,34 @@
             <div class="row">
                 <div class="col-lg-8 text-center mx-auto">
                     <span class="chapter-label reveal">Vision & Mission</span>
-                    <h2 class="section-title reveal">
-                        Driving <em>Digital Transformation</em>
-                    </h2>
+                    <h2 class="section-title reveal">Driving <em>Digital Transformation</em></h2>
                 </div>
             </div>
-
             <div class="row g-4 mt-4 align-items-center">
                 <div class="col-lg-6 reveal">
                     <div class="vision-card">
-                        <div class="vision-icon">👁️</div>
+                        <div class="vision-icon">&#128065;</div>
                         <h3 class="vision-title">Our Vision</h3>
-                        <p class="vision-text">
-                            To empower every business with cutting-edge digital solutions that transcend traditional boundaries. We envision a world where technology and creativity converge to create limitless opportunities for growth and innovation.
-                        </p>
-                        <div class="vision-highlight">
-                            <em>"Transforming businesses through the power of digital innovation."</em>
-                        </div>
+                        <p class="vision-text">To empower every business with cutting-edge digital solutions that transcend traditional boundaries. We envision a world where technology and creativity converge to create limitless opportunities for growth and innovation.</p>
+                        <div class="vision-highlight"><em>"Transforming businesses through the power of digital innovation."</em></div>
                     </div>
                 </div>
                 <div class="col-lg-6 reveal">
                     <div class="vision-card mission-card">
-                        <div class="vision-icon">🎯</div>
+                        <div class="vision-icon">&#127919;</div>
                         <h3 class="vision-title">Our Mission</h3>
-                        <p class="vision-text">
-                            To deliver data-driven, creative solutions that drive measurable results. We are committed to bridging the gap between traditional business principles and modern digital trends, ensuring every client achieves sustainable success.
-                        </p>
-                        <div class="vision-highlight mission-highlight">
-                            <em>"Marrying Creative Storytelling with Smart Technology."</em>
-                        </div>
+                        <p class="vision-text">To deliver data-driven, creative solutions that drive measurable results. We are committed to bridging the gap between traditional business principles and modern digital trends, ensuring every client achieves sustainable success.</p>
+                        <div class="vision-highlight mission-highlight"><em>"Marrying Creative Storytelling with Smart Technology."</em></div>
                     </div>
                 </div>
             </div>
-
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="values-grid reveal">
-                        <div class="value-item">
-                            <div class="value-number">01</div>
-                            <h4>Innovation First</h4>
-                            <p>Pioneering new approaches to digital challenges</p>
-                        </div>
-                        <div class="value-item">
-                            <div class="value-number">02</div>
-                            <h4>Data-Driven</h4>
-                            <p>Decisions backed by analytics and insights</p>
-                        </div>
-                        <div class="value-item">
-                            <div class="value-number">03</div>
-                            <h4>Client Success</h4>
-                            <p>Your growth is our ultimate metric</p>
-                        </div>
-                        <div class="value-item">
-                            <div class="value-number">04</div>
-                            <h4>Global Mindset</h4>
-                            <p>Thinking beyond borders and boundaries</p>
-                        </div>
+                        <div class="value-item"><div class="value-number">01</div><h4>Innovation First</h4><p>Pioneering new approaches to digital challenges</p></div>
+                        <div class="value-item"><div class="value-number">02</div><h4>Data-Driven</h4><p>Decisions backed by analytics and insights</p></div>
+                        <div class="value-item"><div class="value-number">03</div><h4>Client Success</h4><p>Your growth is our ultimate metric</p></div>
+                        <div class="value-item"><div class="value-number">04</div><h4>Global Mindset</h4><p>Thinking beyond borders and boundaries</p></div>
                     </div>
                 </div>
             </div>
@@ -450,109 +472,92 @@
             <div class="row">
                 <div class="col-lg-8">
                     <span class="chapter-label reveal">Services</span>
-                    <h2 class="section-title reveal">
-                        What We <em>Deliver</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        Comprehensive digital solutions tailored to transform your business presence and drive measurable growth.
-                    </p>
+                    <h2 class="section-title reveal">What We <em>Deliver</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">Comprehensive digital solutions tailored to transform your business presence and drive measurable growth.</p>
                 </div>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg">
-                            <div class="service-icon">📊</div>
-                        </div>
+                        <div class="service-icon-bg"><div class="service-icon">&#128202;</div></div>
                         <h3 class="service-title">Performance Marketing</h3>
                         <p class="service-desc">Google Ads, Meta Ads, and programmatic campaigns optimized for maximum ROI and conversion.</p>
-                        <ul class="service-list">
-                            <li>PPC Campaign Management</li>
-                            <li>Conversion Optimization</li>
-                            <li>Retargeting Strategies</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>PPC Campaign Management</li><li>Conversion Optimization</li><li>Retargeting Strategies</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg cyan">
-                            <div class="service-icon">🎨</div>
-                        </div>
+                        <div class="service-icon-bg cyan"><div class="service-icon">&#127912;</div></div>
                         <h3 class="service-title">Brand Strategy</h3>
                         <p class="service-desc">End-to-end brand architecture from identity design to market positioning and storytelling.</p>
-                        <ul class="service-list">
-                            <li>Brand Identity Design</li>
-                            <li>Market Positioning</li>
-                            <li>Visual Systems</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>Brand Identity Design</li><li>Market Positioning</li><li>Visual Systems</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg green">
-                            <div class="service-icon">💻</div>
-                        </div>
+                        <div class="service-icon-bg green"><div class="service-icon">&#128187;</div></div>
                         <h3 class="service-title">Web & App Development</h3>
                         <p class="service-desc">Full-stack development of responsive websites and mobile applications that convert visitors.</p>
-                        <ul class="service-list">
-                            <li>Custom Web Development</li>
-                            <li>Mobile App Solutions</li>
-                            <li>E-commerce Platforms</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>Custom Web Development</li><li>Mobile App Solutions</li><li>E-commerce Platforms</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg purple">
-                            <div class="service-icon">🔍</div>
-                        </div>
+                        <div class="service-icon-bg purple"><div class="service-icon">&#128269;</div></div>
                         <h3 class="service-title">SEO & Content</h3>
                         <p class="service-desc">Organic growth strategies through technical SEO, content marketing, and authority building.</p>
-                        <ul class="service-list">
-                            <li>Technical SEO Audits</li>
-                            <li>Content Strategy</li>
-                            <li>Link Building</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>Technical SEO Audits</li><li>Content Strategy</li><li>Link Building</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg orange">
-                            <div class="service-icon">📱</div>
-                        </div>
+                        <div class="service-icon-bg orange"><div class="service-icon">&#128241;</div></div>
                         <h3 class="service-title">Social Media</h3>
                         <p class="service-desc">Viral social media campaigns and community management across all major platforms.</p>
-                        <ul class="service-list">
-                            <li>Content Creation</li>
-                            <li>Community Management</li>
-                            <li>Influencer Marketing</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>Content Creation</li><li>Community Management</li><li>Influencer Marketing</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="service-card">
-                        <div class="service-icon-bg pink">
-                            <div class="service-icon">📈</div>
-                        </div>
+                        <div class="service-icon-bg pink"><div class="service-icon">&#128200;</div></div>
                         <h3 class="service-title">Analytics & Insights</h3>
                         <p class="service-desc">Data analytics and business intelligence to drive informed strategic decisions.</p>
-                        <ul class="service-list">
-                            <li>Custom Dashboards</li>
-                            <li>Attribution Modeling</li>
-                            <li>Growth Forecasting</li>
-                        </ul>
-                        <a href="#contact" class="service-link">Learn More →</a>
+                        <ul class="service-list"><li>Custom Dashboards</li><li>Attribution Modeling</li><li>Growth Forecasting</li></ul>
+                        <a href="#contact" class="service-link">Learn More &#8594;</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ==================== MARQUEE 3 ==================== -->
+    <div class="marquee-divider"></div>
+    <div class="marquee-section">
+        <div class="marquee-track marquee-track-slow">
+            <div class="marquee-item"><span class="marquee-dot"></span>Healthcare</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Real Estate</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>E-commerce</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Political Campaigns</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Construction</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Startups</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Enterprise</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Healthcare</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Real Estate</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>E-commerce</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Political Campaigns</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Construction</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Startups</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Enterprise</div>
+        </div>
+    </div>
+    <div class="marquee-divider"></div>
 
     <!-- ==================== PORTFOLIO / PROJECTS ==================== -->
     <section class="section-padding" id="portfolio">
@@ -560,25 +565,16 @@
             <div class="row">
                 <div class="col-lg-8">
                     <span class="chapter-label reveal">Portfolio</span>
-                    <h2 class="section-title reveal">
-                        Featured <em>Projects</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        A showcase of transformative work delivered across industries.
-                    </p>
+                    <h2 class="section-title reveal">Featured <em>Projects</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">A showcase of transformative work delivered across industries.</p>
                 </div>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-6 reveal">
                     <div class="portfolio-card">
                         <div class="portfolio-image">
-                            <div class="portfolio-placeholder" style="background: rgba(59,130,246,0.1);">
-                                <span>🏥</span>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="#" class="portfolio-view">View Project →</a>
-                            </div>
+                            <div class="portfolio-placeholder" style="background: rgba(59,130,246,0.1);"><span>&#127973;</span></div>
+                            <div class="portfolio-overlay"><a href="#" class="portfolio-view">View Project &#8594;</a></div>
                         </div>
                         <div class="portfolio-info">
                             <span class="portfolio-tag">Healthcare</span>
@@ -590,12 +586,8 @@
                 <div class="col-md-6 reveal">
                     <div class="portfolio-card">
                         <div class="portfolio-image">
-                            <div class="portfolio-placeholder" style="background: rgba(16,185,129,0.1);">
-                                <span>🏢</span>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="#" class="portfolio-view">View Project →</a>
-                            </div>
+                            <div class="portfolio-placeholder" style="background: rgba(16,185,129,0.1);"><span>&#127970;</span></div>
+                            <div class="portfolio-overlay"><a href="#" class="portfolio-view">View Project &#8594;</a></div>
                         </div>
                         <div class="portfolio-info">
                             <span class="portfolio-tag">Real Estate</span>
@@ -607,29 +599,21 @@
                 <div class="col-md-6 reveal">
                     <div class="portfolio-card">
                         <div class="portfolio-image">
-                            <div class="portfolio-placeholder" style="background: rgba(6,182,212,0.1);">
-                                <span>🛒</span>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="#" class="portfolio-view">View Project →</a>
-                            </div>
+                            <div class="portfolio-placeholder" style="background: rgba(6,182,212,0.1);"><span>&#128722;</span></div>
+                            <div class="portfolio-overlay"><a href="#" class="portfolio-view">View Project &#8594;</a></div>
                         </div>
                         <div class="portfolio-info">
                             <span class="portfolio-tag">E-commerce</span>
                             <h3 class="portfolio-title">ShopScale Growth Campaign</h3>
-                            <p class="portfolio-desc">End-to-end e-commerce strategy including SEO, ads, and CRO that scaled revenue from ₹50L to ₹5Cr annually.</p>
+                            <p class="portfolio-desc">End-to-end e-commerce strategy including SEO, ads, and CRO that scaled revenue from &#8377;50L to &#8377;5Cr annually.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 reveal">
                     <div class="portfolio-card">
                         <div class="portfolio-image">
-                            <div class="portfolio-placeholder" style="background: rgba(139,92,246,0.1);">
-                                <span>🗳️</span>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <a href="#" class="portfolio-view">View Project →</a>
-                            </div>
+                            <div class="portfolio-placeholder" style="background: rgba(139,92,246,0.1);"><span>&#128499;</span></div>
+                            <div class="portfolio-overlay"><a href="#" class="portfolio-view">View Project &#8594;</a></div>
                         </div>
                         <div class="portfolio-info">
                             <span class="portfolio-tag">Political</span>
@@ -648,19 +632,14 @@
             <div class="row">
                 <div class="col-lg-8 text-center mx-auto">
                     <span class="chapter-label reveal">Achievements</span>
-                    <h2 class="section-title reveal">
-                        Recognition & <em>Milestones</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        Awards, accolades, and milestones that mark the journey of excellence.
-                    </p>
+                    <h2 class="section-title reveal">Recognition & <em>Milestones</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">Awards, accolades, and milestones that mark the journey of excellence.</p>
                 </div>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">🏆</div>
+                        <div class="achievement-trophy">&#127942;</div>
                         <h3 class="achievement-title">Best Social Activist Award</h3>
                         <p class="achievement-desc">Recognized for outstanding contributions to social causes and community development initiatives.</p>
                         <span class="achievement-year">2023</span>
@@ -668,7 +647,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">🚀</div>
+                        <div class="achievement-trophy">&#128640;</div>
                         <h3 class="achievement-title">5 Companies Founded</h3>
                         <p class="achievement-desc">Successfully built and scaled 5 ventures across digital marketing, edtech, and construction sectors.</p>
                         <span class="achievement-year">2020-2024</span>
@@ -676,7 +655,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">🌐</div>
+                        <div class="achievement-trophy">&#127758;</div>
                         <h3 class="achievement-title">Global Team Builder</h3>
                         <p class="achievement-desc">Built and managed a distributed team of 20+ freelancers across multiple countries.</p>
                         <span class="achievement-year">2024</span>
@@ -684,7 +663,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">📈</div>
+                        <div class="achievement-trophy">&#128200;</div>
                         <h3 class="achievement-title">Multi-Sector Impact</h3>
                         <p class="achievement-desc">Delivered results across Healthcare, Real Estate, E-commerce, and Political Campaigns.</p>
                         <span class="achievement-year">Ongoing</span>
@@ -692,7 +671,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">🎓</div>
+                        <div class="achievement-trophy">&#127891;</div>
                         <h3 class="achievement-title">Academic Excellence</h3>
                         <p class="achievement-desc">MBA in Marketing & Finance with practical application in building successful businesses.</p>
                         <span class="achievement-year">2019</span>
@@ -700,36 +679,23 @@
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="achievement-card">
-                        <div class="achievement-trophy">💡</div>
+                        <div class="achievement-trophy">&#128161;</div>
                         <h3 class="achievement-title">Innovation Leader</h3>
                         <p class="achievement-desc">Pioneered data-driven marketing strategies that transformed client businesses.</p>
                         <span class="achievement-year">Ongoing</span>
                     </div>
                 </div>
             </div>
-
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="stats-banner reveal">
-                        <div class="stat-banner-item">
-                            <span class="stat-banner-number">50+</span>
-                            <span class="stat-banner-label">Clients Served</span>
-                        </div>
+                        <div class="stat-banner-item"><span class="stat-banner-number">50+</span><span class="stat-banner-label">Clients Served</span></div>
                         <div class="stat-banner-divider"></div>
-                        <div class="stat-banner-item">
-                            <span class="stat-banner-number">₹10Cr+</span>
-                            <span class="stat-banner-label">Revenue Generated</span>
-                        </div>
+                        <div class="stat-banner-item"><span class="stat-banner-number">&#8377;10Cr+</span><span class="stat-banner-label">Revenue Generated</span></div>
                         <div class="stat-banner-divider"></div>
-                        <div class="stat-banner-item">
-                            <span class="stat-banner-number">100+</span>
-                            <span class="stat-banner-label">Campaigns Delivered</span>
-                        </div>
+                        <div class="stat-banner-item"><span class="stat-banner-number">100+</span><span class="stat-banner-label">Campaigns Delivered</span></div>
                         <div class="stat-banner-divider"></div>
-                        <div class="stat-banner-item">
-                            <span class="stat-banner-number">4</span>
-                            <span class="stat-banner-label">Industries Mastered</span>
-                        </div>
+                        <div class="stat-banner-item"><span class="stat-banner-number">4</span><span class="stat-banner-label">Industries Mastered</span></div>
                     </div>
                 </div>
             </div>
@@ -742,52 +708,38 @@
             <div class="row">
                 <div class="col-lg-8 text-center mx-auto">
                     <span class="chapter-label reveal">Testimonials</span>
-                    <h2 class="section-title reveal">
-                        What Clients <em>Say</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        Real feedback from real partners who experienced real growth.
-                    </p>
+                    <h2 class="section-title reveal">What Clients <em>Say</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">Real feedback from real partners who experienced real growth.</p>
                 </div>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <p class="testimonial-text">"Naveenkumar transformed our digital presence completely. Our lead generation increased by 400% within 6 months. Truly exceptional work."</p>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar" style="background: rgba(59,130,246,0.2);">🏥</div>
-                            <div class="testimonial-info">
-                                <h5>Dr. Rajesh Kumar</h5>
-                                <span>CEO, MedCare Hospitals</span>
-                            </div>
+                            <div class="testimonial-avatar" style="background: rgba(59,130,246,0.2);">&#127973;</div>
+                            <div class="testimonial-info"><h5>Dr. Rajesh Kumar</h5><span>CEO, MedCare Hospitals</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <p class="testimonial-text">"The strategic approach to our real estate campaigns was game-changing. We sold 80% of inventory in record time. Highly recommended."</p>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar" style="background: rgba(16,185,129,0.2);">🏢</div>
-                            <div class="testimonial-info">
-                                <h5>Priya Sharma</h5>
-                                <span>Director, PropertyX Developers</span>
-                            </div>
+                            <div class="testimonial-avatar" style="background: rgba(16,185,129,0.2);">&#127970;</div>
+                            <div class="testimonial-info"><h5>Priya Sharma</h5><span>Director, PropertyX Developers</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"From zero online sales to ₹5Cr revenue in one year. The e-commerce strategy was flawless. Naveen and his team are magicians."</p>
+                        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="testimonial-text">"From zero online sales to &#8377;5Cr revenue in one year. The e-commerce strategy was flawless. Naveen and his team are magicians."</p>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar" style="background: rgba(6,182,212,0.2);">🛒</div>
-                            <div class="testimonial-info">
-                                <h5>Arun Mehta</h5>
-                                <span>Founder, ShopScale</span>
-                            </div>
+                            <div class="testimonial-avatar" style="background: rgba(6,182,212,0.2);">&#128722;</div>
+                            <div class="testimonial-info"><h5>Arun Mehta</h5><span>Founder, ShopScale</span></div>
                         </div>
                     </div>
                 </div>
@@ -801,106 +753,78 @@
             <div class="row">
                 <div class="col-lg-8 text-center mx-auto">
                     <span class="chapter-label reveal">Future Roadmap</span>
-                    <h2 class="section-title reveal">
-                        Vision for <em>2025 & Beyond</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        Strategic milestones that define the next chapter of growth and innovation.
-                    </p>
+                    <h2 class="section-title reveal">Vision for <em>2025 & Beyond</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">Strategic milestones that define the next chapter of growth and innovation.</p>
                 </div>
             </div>
-
             <div class="row g-4">
-                <!-- Phase 1 -->
                 <div class="col-md-6 col-lg-3 reveal">
                     <div class="roadmap-phase-card">
-                        <div class="roadmap-phase-header">
-                            <div class="roadmap-phase-icon">🚀</div>
-                            <div class="roadmap-phase-status status-ongoing">In Progress</div>
-                        </div>
+                        <div class="roadmap-phase-header"><div class="roadmap-phase-icon">&#128640;</div><div class="roadmap-phase-status status-ongoing">In Progress</div></div>
                         <div class="roadmap-phase-year">Q1 2025</div>
                         <h3 class="roadmap-phase-title">AI-Powered Marketing Suite</h3>
                         <p class="roadmap-phase-desc">Launching an integrated AI platform for predictive analytics, automated campaign optimization, and intelligent content generation.</p>
-                        <div class="roadmap-phase-progress">
-                            <div class="roadmap-progress-bar" style="width: 75%;"></div>
-                        </div>
-                        <ul class="roadmap-milestones">
-                            <li class="completed">✓ Beta testing complete</li>
-                            <li class="completed">✓ Core algorithms built</li>
-                            <li class="pending">○ Client onboarding portal</li>
-                            <li class="pending">○ Public launch</li>
-                        </ul>
+                        <div class="roadmap-phase-progress"><div class="roadmap-progress-bar" style="width: 75%;"></div></div>
+                        <ul class="roadmap-milestones"><li class="completed">&#10003; Beta testing complete</li><li class="completed">&#10003; Core algorithms built</li><li class="pending">&#9675; Client onboarding portal</li><li class="pending">&#9675; Public launch</li></ul>
                     </div>
                 </div>
-
-                <!-- Phase 2 -->
                 <div class="col-md-6 col-lg-3 reveal">
                     <div class="roadmap-phase-card">
-                        <div class="roadmap-phase-header">
-                            <div class="roadmap-phase-icon">🌍</div>
-                            <div class="roadmap-phase-status status-planned">Planned</div>
-                        </div>
+                        <div class="roadmap-phase-header"><div class="roadmap-phase-icon">&#127757;</div><div class="roadmap-phase-status status-planned">Planned</div></div>
                         <div class="roadmap-phase-year">Q2 2025</div>
                         <h3 class="roadmap-phase-title">Global Expansion</h3>
                         <p class="roadmap-phase-desc">Establishing offices in Dubai and Singapore to serve international clients and expand the global freelancer network to 50+ professionals.</p>
-                        <div class="roadmap-phase-progress">
-                            <div class="roadmap-progress-bar" style="width: 30%;"></div>
-                        </div>
-                        <ul class="roadmap-milestones">
-                            <li class="completed">✓ Market research</li>
-                            <li class="pending">○ Legal entity setup</li>
-                            <li class="pending">○ Team recruitment</li>
-                            <li class="pending">○ Office launch</li>
-                        </ul>
+                        <div class="roadmap-phase-progress"><div class="roadmap-progress-bar" style="width: 30%;"></div></div>
+                        <ul class="roadmap-milestones"><li class="completed">&#10003; Market research</li><li class="pending">&#9675; Legal entity setup</li><li class="pending">&#9675; Team recruitment</li><li class="pending">&#9675; Office launch</li></ul>
                     </div>
                 </div>
-
-                <!-- Phase 3 -->
                 <div class="col-md-6 col-lg-3 reveal">
                     <div class="roadmap-phase-card">
-                        <div class="roadmap-phase-header">
-                            <div class="roadmap-phase-icon">🎓</div>
-                            <div class="roadmap-phase-status status-planned">Planned</div>
-                        </div>
+                        <div class="roadmap-phase-header"><div class="roadmap-phase-icon">&#127891;</div><div class="roadmap-phase-status status-planned">Planned</div></div>
                         <div class="roadmap-phase-year">Q3 2025</div>
                         <h3 class="roadmap-phase-title">KnownCore Academy</h3>
                         <p class="roadmap-phase-desc">Scaling KnownCore Edutech into a full-fledged digital marketing academy offering certified courses and corporate training programs.</p>
-                        <div class="roadmap-phase-progress">
-                            <div class="roadmap-progress-bar" style="width: 15%;"></div>
-                        </div>
-                        <ul class="roadmap-milestones">
-                            <li class="pending">○ Curriculum development</li>
-                            <li class="pending">○ Platform architecture</li>
-                            <li class="pending">○ Instructor onboarding</li>
-                            <li class="pending">○ Beta cohort launch</li>
-                        </ul>
+                        <div class="roadmap-phase-progress"><div class="roadmap-progress-bar" style="width: 15%;"></div></div>
+                        <ul class="roadmap-milestones"><li class="pending">&#9675; Curriculum development</li><li class="pending">&#9675; Platform architecture</li><li class="pending">&#9675; Instructor onboarding</li><li class="pending">&#9675; Beta cohort launch</li></ul>
                     </div>
                 </div>
-
-                <!-- Phase 4 -->
                 <div class="col-md-6 col-lg-3 reveal">
                     <div class="roadmap-phase-card">
-                        <div class="roadmap-phase-header">
-                            <div class="roadmap-phase-icon">💡</div>
-                            <div class="roadmap-phase-status status-vision">Vision</div>
-                        </div>
+                        <div class="roadmap-phase-header"><div class="roadmap-phase-icon">&#128161;</div><div class="roadmap-phase-status status-vision">Vision</div></div>
                         <div class="roadmap-phase-year">2026</div>
                         <h3 class="roadmap-phase-title">Venture Fund & Incubator</h3>
                         <p class="roadmap-phase-desc">Launching a micro-VC fund and startup incubator focused on nurturing early-stage digital and edtech startups in Tier 2/3 cities.</p>
-                        <div class="roadmap-phase-progress">
-                            <div class="roadmap-progress-bar" style="width: 5%;"></div>
-                        </div>
-                        <ul class="roadmap-milestones">
-                            <li class="pending">○ Fund structure design</li>
-                            <li class="pending">○ LP network building</li>
-                            <li class="pending">○ First investments</li>
-                            <li class="pending">○ Portfolio growth</li>
-                        </ul>
+                        <div class="roadmap-phase-progress"><div class="roadmap-progress-bar" style="width: 5%;"></div></div>
+                        <ul class="roadmap-milestones"><li class="pending">&#9675; Fund structure design</li><li class="pending">&#9675; LP network building</li><li class="pending">&#9675; First investments</li><li class="pending">&#9675; Portfolio growth</li></ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ==================== MARQUEE 4 ==================== -->
+    <div class="marquee-divider"></div>
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-dot"></span>AI-Powered Marketing</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Global Expansion</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech Academy</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Venture Fund</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Startup Incubator</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Dubai Office</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Singapore Office</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Tier 2/3 Cities</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>AI-Powered Marketing</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Global Expansion</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>EdTech Academy</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Venture Fund</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Startup Incubator</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Dubai Office</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Singapore Office</div>
+            <div class="marquee-item"><span class="marquee-dot"></span>Tier 2/3 Cities</div>
+        </div>
+    </div>
+    <div class="marquee-divider"></div>
 
     <!-- ==================== CONTACT SECTION ==================== -->
     <section class="section-padding" id="contact">
@@ -908,50 +832,39 @@
             <div class="row">
                 <div class="col-lg-8 text-center mx-auto">
                     <span class="chapter-label reveal">Get in Touch</span>
-                    <h2 class="section-title reveal">
-                        Let's <em>Connect</em>
-                    </h2>
-                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">
-                        Interested in collaborating, partnering, or learning more about my ventures? Reach out and let's create something extraordinary together.
-                    </p>
+                    <h2 class="section-title reveal">Let's <em>Connect</em></h2>
+                    <p class="reveal" style="color: var(--text-secondary); margin-bottom: 3rem;">Interested in collaborating, partnering, or learning more about my ventures? Reach out and let's create something extraordinary together.</p>
                 </div>
             </div>
-
             <div class="row g-4 align-items-stretch">
-                <!-- Contact Info Cards -->
                 <div class="col-lg-5 reveal">
                     <div class="contact-info-wrapper">
                         <div class="contact-info-card">
-                            <div class="contact-info-icon">📧</div>
+                            <div class="contact-info-icon">&#128231;</div>
                             <h4>Email</h4>
                             <a href="mailto:naveenkumar@lordminds.com">naveenkumar@lordminds.com</a>
                             <span class="contact-response">Typically responds within 24h</span>
                         </div>
-                        
                         <div class="contact-info-card">
-                            <div class="contact-info-icon">📱</div>
+                            <div class="contact-info-icon">&#128241;</div>
                             <h4>Phone</h4>
                             <a href="tel:+919876543210">+91 98765 43210</a>
                             <span class="contact-response">Mon-Sat, 9AM - 7PM IST</span>
                         </div>
-                        
                         <div class="contact-info-card">
-                            <div class="contact-info-icon">📍</div>
+                            <div class="contact-info-icon">&#128205;</div>
                             <h4>Location</h4>
                             <p>Tamil Nadu, India</p>
                             <span class="contact-response">Available for global travel</span>
                         </div>
-                        
                         <div class="contact-info-card">
-                            <div class="contact-info-icon">💼</div>
+                            <div class="contact-info-icon">&#128188;</div>
                             <h4>Business Inquiries</h4>
                             <p>For partnerships & investments</p>
                             <a href="mailto:partnerships@lordminds.com">partnerships@lordminds.com</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
                 <div class="col-lg-7 reveal">
                     <div class="contact-form-wrapper">
                         <form class="contact-form" id="contactForm">
@@ -1008,7 +921,7 @@
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary-custom btn-custom w-100 contact-submit-btn">
                                         <span class="btn-text">Send Message</span>
-                                        <span class="btn-icon">→</span>
+                                        <span class="btn-icon">&#8594;</span>
                                     </button>
                                 </div>
                             </div>
@@ -1016,44 +929,25 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Social Connect -->
             <div class="row mt-5">
                 <div class="col-12 text-center reveal">
                     <div class="social-connect-wrapper">
                         <h4 class="social-connect-title">Connect on Social Media</h4>
                         <div class="social-connect-links">
-                            <a href="#" class="social-connect-item" data-platform="LinkedIn">
-                                <div class="social-icon-bg">in</div>
-                                <span>LinkedIn</span>
-                            </a>
-                            <a href="#" class="social-connect-item" data-platform="Twitter">
-                                <div class="social-icon-bg">𝕏</div>
-                                <span>Twitter</span>
-                            </a>
-                            <a href="#" class="social-connect-item" data-platform="Instagram">
-                                <div class="social-icon-bg">📷</div>
-                                <span>Instagram</span>
-                            </a>
-                            <a href="#" class="social-connect-item" data-platform="YouTube">
-                                <div class="social-icon-bg">▶️</div>
-                                <span>YouTube</span>
-                            </a>
-                            <a href="#" class="social-connect-item" data-platform="WhatsApp">
-                                <div class="social-icon-bg">💬</div>
-                                <span>WhatsApp</span>
-                            </a>
+                            <a href="#" class="social-connect-item" data-platform="LinkedIn"><div class="social-icon-bg">in</div><span>LinkedIn</span></a>
+                            <a href="#" class="social-connect-item" data-platform="Twitter"><div class="social-icon-bg">&#120143;</div><span>Twitter</span></a>
+                            <a href="#" class="social-connect-item" data-platform="Instagram"><div class="social-icon-bg">&#128247;</div><span>Instagram</span></a>
+                            <a href="#" class="social-connect-item" data-platform="YouTube"><div class="social-icon-bg">&#9654;</div><span>YouTube</span></a>
+                            <a href="#" class="social-connect-item" data-platform="WhatsApp"><div class="social-icon-bg">&#128172;</div><span>WhatsApp</span></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Book Meeting -->
             <div class="row mt-4">
                 <div class="col-12 text-center reveal">
                     <div class="book-meeting-banner">
                         <div class="book-meeting-content">
-                            <span class="book-meeting-icon">📅</span>
+                            <span class="book-meeting-icon">&#128197;</span>
                             <h4>Prefer to schedule a call?</h4>
                             <p>Book a 30-minute discovery session directly on my calendar</p>
                             <a href="#" class="btn btn-outline-custom btn-custom">Book a Meeting</a>
@@ -1068,7 +962,6 @@
     <footer class="footer" id="footer">
         <div class="footer-top-glow"></div>
         <div class="container">
-            <!-- Newsletter Row -->
             <div class="row footer-newsletter-row">
                 <div class="col-lg-8 mx-auto reveal">
                     <div class="newsletter-box">
@@ -1086,9 +979,7 @@
                     </div>
                 </div>
             </div>
-
             <div class="row footer-main-row">
-                <!-- Brand Column -->
                 <div class="col-lg-4 mb-4 reveal">
                     <div class="footer-brand-wrapper">
                         <div class="logo-3d-container footer-logo">
@@ -1099,14 +990,9 @@
                         </div>
                         <div class="footer-brand">Naveenkumar Samiyappan</div>
                         <p class="footer-text">Founder & CEO of LordMinds Pvt Ltd. A visionary entrepreneur and digital growth strategist transforming businesses through data-driven and creative solutions.</p>
-                        <div class="footer-verified">
-                            <span class="verified-badge">✓</span>
-                            <span>Open for Business Partnerships</span>
-                        </div>
+                        <div class="footer-verified"><span class="verified-badge">&#10003;</span><span>Open for Business Partnerships</span></div>
                     </div>
                 </div>
-
-                <!-- Ventures Column -->
                 <div class="col-lg-2 col-md-4 mb-4 reveal">
                     <div class="footer-links">
                         <h5>Ventures</h5>
@@ -1117,8 +1003,6 @@
                         <a href="#">Muster Construct</a>
                     </div>
                 </div>
-
-                <!-- Expertise Column -->
                 <div class="col-lg-2 col-md-4 mb-4 reveal">
                     <div class="footer-links">
                         <h5>Expertise</h5>
@@ -1129,8 +1013,6 @@
                         <a href="#">Data Analytics</a>
                     </div>
                 </div>
-
-                <!-- Quick Links Column -->
                 <div class="col-lg-2 col-md-4 mb-4 reveal">
                     <div class="footer-links">
                         <h5>Quick Links</h5>
@@ -1141,8 +1023,6 @@
                         <a href="#contact">Contact</a>
                     </div>
                 </div>
-
-                <!-- Connect Column -->
                 <div class="col-lg-2 col-md-4 mb-4 reveal">
                     <div class="footer-links">
                         <h5>Connect</h5>
@@ -1154,46 +1034,28 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Stats Row -->
             <div class="row footer-stats-row reveal">
                 <div class="col-12">
                     <div class="footer-stats">
-                        <div class="footer-stat">
-                            <span class="footer-stat-number">7+</span>
-                            <span class="footer-stat-label">Years Experience</span>
-                        </div>
+                        <div class="footer-stat"><span class="footer-stat-number">7+</span><span class="footer-stat-label">Years Experience</span></div>
                         <div class="footer-stat-divider"></div>
-                        <div class="footer-stat">
-                            <span class="footer-stat-number">5</span>
-                            <span class="footer-stat-label">Companies Founded</span>
-                        </div>
+                        <div class="footer-stat"><span class="footer-stat-number">5</span><span class="footer-stat-label">Companies Founded</span></div>
                         <div class="footer-stat-divider"></div>
-                        <div class="footer-stat">
-                            <span class="footer-stat-number">20+</span>
-                            <span class="footer-stat-label">Global Team</span>
-                        </div>
+                        <div class="footer-stat"><span class="footer-stat-number">20+</span><span class="footer-stat-label">Global Team</span></div>
                         <div class="footer-stat-divider"></div>
-                        <div class="footer-stat">
-                            <span class="footer-stat-number">50+</span>
-                            <span class="footer-stat-label">Clients Served</span>
-                        </div>
+                        <div class="footer-stat"><span class="footer-stat-number">50+</span><span class="footer-stat-label">Clients Served</span></div>
                     </div>
                 </div>
             </div>
-
-            <!-- Bottom Bar -->
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <p class="footer-copyright"> Naveenkumar Samiyappan. All rights reserved.</p>
-                    </div>
+                    <div class="col-md-6"><p class="footer-copyright"> Naveenkumar Samiyappan. All rights reserved.</p></div>
                     <div class="col-md-6">
                         <div class="footer-bottom-links">
                             <a href="#">Privacy Policy</a>
-                            <span class="footer-dot">•</span>
+                            <span class="footer-dot">&#8226;</span>
                             <a href="#">Terms of Service</a>
-                            <span class="footer-dot">•</span>
+                            <span class="footer-dot">&#8226;</span>
                             <a href="#">Sitemap</a>
                         </div>
                     </div>
@@ -1207,5 +1069,6 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/main.js"></script>
+
 </body>
 </html>

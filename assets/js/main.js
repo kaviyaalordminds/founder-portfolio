@@ -3,18 +3,14 @@ $(document).ready(function() {
     const preloader = document.getElementById('preloader');
     const progressBar = document.getElementById('preloader-progress');
 
-    // Simulate loading progress
     let progress = 0;
     const loadInterval = setInterval(() => {
         progress += Math.random() * 15;
         if (progress >= 100) {
             progress = 100;
             clearInterval(loadInterval);
-
-            // Hide preloader after loading completes
             setTimeout(() => {
                 preloader.classList.add('hidden');
-                // Enable scroll after preloader
                 document.body.style.overflow = 'auto';
             }, 500);
         }
@@ -23,8 +19,67 @@ $(document).ready(function() {
         }
     }, 200);
 
-    // Disable scroll during preloader
     document.body.style.overflow = 'hidden';
+
+    // ==================== 3D ZIG-ZAG PARALLAX ====================
+    const zigzagContainer = document.getElementById('zigzag-bg');
+    if (zigzagContainer) {
+        let zigzagScrollY = 0;
+        let zigzagTargetY = 0;
+
+        window.addEventListener('scroll', () => {
+            zigzagTargetY = window.pageYOffset;
+        }, { passive: true });
+
+        function animateZigzag() {
+            zigzagScrollY += (zigzagTargetY - zigzagScrollY) * 0.05;
+            const lines = zigzagContainer.querySelectorAll('.zigzag-line');
+            lines.forEach((line, index) => {
+                const speed = (index % 2 === 0 ? 1 : -1) * (0.1 + index * 0.02);
+                const yOffset = zigzagScrollY * speed;
+                const currentTransform = line.style.transform || '';
+                const rotateMatch = currentTransform.match(/rotate\([^)]+\)/);
+                const rotate = rotateMatch ? rotateMatch[0] : 'rotate(0deg)';
+                line.style.transform = `translateY(${yOffset}px) ${rotate}`;
+            });
+            requestAnimationFrame(animateZigzag);
+        }
+        animateZigzag();
+    }
+
+    // ==================== BACK TO TOP BUTTON ====================
+    const backToTop = document.getElementById('backToTop');
+    const progressCircle = document.getElementById('progressCircle');
+    const circumference = 2 * Math.PI * 45;
+
+    if (progressCircle) {
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = circumference;
+    }
+
+    function updateBackToTop() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+
+        if (scrollTop > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+
+        if (progressCircle) {
+            const offset = circumference - (scrollPercent * circumference);
+            progressCircle.style.strokeDashoffset = offset;
+        }
+    }
+
+    window.addEventListener('scroll', updateBackToTop, { passive: true });
+    updateBackToTop();
+
+    window.scrollToTop = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     // ==================== 3D CANVAS BACKGROUND ====================
     const canvas = document.getElementById('hero-canvas');
@@ -84,7 +139,6 @@ $(document).ready(function() {
             p.draw();
         });
 
-        // Draw connecting lines
         particles.forEach((p1, i) => {
             particles.slice(i + 1).forEach(p2 => {
                 const d = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2 + (p1.z - p2.z) ** 2);
@@ -109,7 +163,6 @@ $(document).ready(function() {
     }
     animate();
 
-    // Mouse tracking
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -127,35 +180,8 @@ $(document).ready(function() {
         particleContainer.appendChild(particle);
     }
 
-    // ==================== CUSTOM CURSOR ====================
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    document.addEventListener('mousemove', (e) => {
-        cursorDot.style.left = e.clientX + 'px';
-        cursorDot.style.top = e.clientY + 'px';
-
-        setTimeout(() => {
-            cursorOutline.style.left = e.clientX + 'px';
-            cursorOutline.style.top = e.clientY + 'px';
-        }, 100);
-    });
-
-    // Hover effects for cursor
-    document.querySelectorAll('a, button, .feature-card, .team-card, .hero-image-container').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = 'scale(1.5)';
-            cursorOutline.style.borderColor = 'var(--accent-cyan)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = 'scale(1)';
-            cursorOutline.style.borderColor = 'var(--accent-blue)';
-        });
-    });
-
     // ==================== SCROLL REVEAL ANIMATION ====================
     const revealElements = document.querySelectorAll('.reveal');
-
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -194,23 +220,6 @@ $(document).ready(function() {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // ==================== COMPARISON BAR ANIMATION ====================
-    const comparisonBars = document.querySelectorAll('.comparison-fill');
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const bar = entry.target;
-                const width = bar.getAttribute('data-width');
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 200);
-                barObserver.unobserve(bar);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    comparisonBars.forEach(bar => barObserver.observe(bar));
-
     // ==================== 3D TILT EFFECT ON CARDS ====================
     document.querySelectorAll('.feature-card, .team-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -221,7 +230,6 @@ $(document).ready(function() {
             const centerY = rect.height / 2;
             const rotateX = (y - centerY) / 10;
             const rotateY = (centerX - x) / 10;
-
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
         });
 
@@ -237,10 +245,8 @@ $(document).ready(function() {
             const rect = heroImage3d.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-
             const rotateX = (e.clientY - centerY) / 50;
             const rotateY = (centerX - e.clientX) / 50;
-
             heroImage3d.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
     }
@@ -272,7 +278,6 @@ $(document).ready(function() {
             navbar.style.background = 'rgba(10, 10, 10, 0.8)';
             navbar.style.boxShadow = 'none';
         }
-
         lastScroll = currentScroll;
     });
 
@@ -305,42 +310,22 @@ $(document).ready(function() {
         });
     });
 
-    // ==================== EXPERTISE 3D SCROLL EFFECTS ====================
-    const expertiseTrack = document.getElementById('expertise-track');
-    if (expertiseTrack) {
-        // Clone cards for infinite scroll effect
-        const cards = expertiseTrack.querySelectorAll('.expertise-3d-card');
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            expertiseTrack.appendChild(clone);
+    // ==================== MARQUEE SPEED CONTROL ON SCROLL ====================
+    const marqueeTracks = document.querySelectorAll('.marquee-track');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+        const speedMultiplier = 1 + scrollSpeed * 0.01;
+
+        marqueeTracks.forEach(track => {
+            const baseDuration = track.classList.contains('marquee-track-reverse') ? 35 :
+                                track.classList.contains('marquee-track-slow') ? 45 : 30;
+            track.style.animationDuration = (baseDuration / speedMultiplier) + 's';
         });
 
-        // Add scroll-based 3D tilt
-        const expertiseContainer = document.querySelector('.expertise-3d-container');
-        if (expertiseContainer) {
-            expertiseContainer.addEventListener('scroll', () => {
-                const scrollLeft = expertiseContainer.scrollLeft;
-                const allCards = expertiseTrack.querySelectorAll('.expertise-3d-card');
-
-                allCards.forEach((card, index) => {
-                    const cardRect = card.getBoundingClientRect();
-                    const containerRect = expertiseContainer.getBoundingClientRect();
-                    const cardCenter = cardRect.left + cardRect.width / 2;
-                    const containerCenter = containerRect.left + containerRect.width / 2;
-                    const distance = (cardCenter - containerCenter) / containerRect.width;
-
-                    const rotateY = distance * 15;
-                    const scale = 1 - Math.abs(distance) * 0.1;
-                    const opacity = 1 - Math.abs(distance) * 0.3;
-
-                    if (!card.matches(':hover')) {
-                        card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) scale(${scale})`;
-                        card.style.opacity = Math.max(0.5, opacity);
-                    }
-                });
-            });
-        }
-    }
+        lastScrollY = window.scrollY;
+    }, { passive: true });
 
     // ==================== HERO STATS COUNTER ====================
     const heroCounters = document.querySelectorAll('.hero-stat-item .counter');
@@ -370,14 +355,168 @@ $(document).ready(function() {
 
     heroCounters.forEach(counter => heroCounterObserver.observe(counter));
 
-    // ==================== MARQUEE SPEED CONTROL ====================
-    const marquee = document.querySelector('.marquee-content');
-    if (marquee) {
-        let marqueeSpeed = 1;
-        window.addEventListener('scroll', () => {
-            const scrollSpeed = Math.abs(window.scrollY - lastScroll);
-            marqueeSpeed = 1 + scrollSpeed * 0.01;
-            marquee.style.animationDuration = (30 / marqueeSpeed) + 's';
+    // ==================== TIMELINE ANIMATION ====================
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    timelineItems.forEach(item => timelineObserver.observe(item));
+
+    // ==================== ROADMAP PROGRESS ANIMATION ====================
+    const roadmapProgressBars = document.querySelectorAll('.roadmap-progress-bar');
+    const roadmapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 200);
+                roadmapObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    roadmapProgressBars.forEach(bar => roadmapObserver.observe(bar));
+
+    // ==================== CONTACT FORM HANDLING ====================
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.contact-submit-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="btn-text">Sending...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="btn-text">Message Sent!</span> <span class="btn-icon">&#10003;</span>';
+                btn.style.background = 'var(--accent-green)';
+                btn.style.borderColor = 'var(--accent-green)';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.borderColor = '';
+                    btn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
         });
     }
+
+    // ==================== MARQUEE PAUSE ON HOVER ====================
+    marqueeTracks.forEach(track => {
+        track.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
+    });
+
+    // ==================== 3D DEPTH CUBE PARALLAX ====================
+    const depthCubes = document.querySelectorAll('.depth-cube');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        depthCubes.forEach((cube, index) => {
+            const speed = 0.05 + (index * 0.01);
+            const yOffset = scrolled * speed;
+            const currentTransform = cube.style.transform || '';
+            const animMatch = currentTransform.match(/translateY\([^)]+\)/);
+            if (!animMatch) {
+                cube.style.transform = `translateY(${yOffset}px)`;
+            }
+        });
+    }, { passive: true });
+
+    // ==================== VENTURE CARDS 3D TILT ====================
+    document.querySelectorAll('.venture-card, .service-card, .portfolio-card, .achievement-card, .testimonial-card, .roadmap-phase-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+    // ==================== STATS BANNER COUNTER ====================
+    const statBannerNumbers = document.querySelectorAll('.stat-banner-number');
+    const statBannerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const text = el.textContent;
+                const numMatch = text.match(/[\d,]+/);
+                if (numMatch) {
+                    const target = parseInt(numMatch[0].replace(/,/g, ''));
+                    const suffix = text.replace(numMatch[0], '');
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const updateStat = () => {
+                        current += step;
+                        if (current < target) {
+                            el.textContent = Math.floor(current).toLocaleString() + suffix;
+                            requestAnimationFrame(updateStat);
+                        } else {
+                            el.textContent = target.toLocaleString() + suffix;
+                        }
+                    };
+                    updateStat();
+                }
+                statBannerObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statBannerNumbers.forEach(el => statBannerObserver.observe(el));
+
+    // ==================== FOOTER STATS COUNTER ====================
+    const footerStatNumbers = document.querySelectorAll('.footer-stat-number');
+    const footerStatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const text = el.textContent;
+                const numMatch = text.match(/[\d,]+/);
+                if (numMatch) {
+                    const target = parseInt(numMatch[0].replace(/,/g, ''));
+                    const suffix = text.replace(numMatch[0], '');
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const updateStat = () => {
+                        current += step;
+                        if (current < target) {
+                            el.textContent = Math.floor(current).toLocaleString() + suffix;
+                            requestAnimationFrame(updateStat);
+                        } else {
+                            el.textContent = target.toLocaleString() + suffix;
+                        }
+                    };
+                    updateStat();
+                }
+                footerStatObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    footerStatNumbers.forEach(el => footerStatObserver.observe(el));
 });
