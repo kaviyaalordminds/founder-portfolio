@@ -1,5 +1,52 @@
 $(document).ready(function() {
-    // ==================== PRELOADER ====================
+
+    // ==================== SMOKY CURSOR EFFECT ====================
+    const cursor = document.getElementById('customCursor');
+    let cursorX = -100, cursorY = -100;
+    let smokeColors = [
+        'rgba(59,130,246,0.55)',
+        'rgba(6,182,212,0.45)',
+        'rgba(16,185,129,0.35)',
+        'rgba(99,102,241,0.4)'
+    ];
+
+    if (cursor && window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top  = cursorY + 'px';
+
+            // Emit smoke particles
+            for (let i = 0; i < 2; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+                const size = Math.random() * 18 + 8;
+                const color = smokeColors[Math.floor(Math.random() * smokeColors.length)];
+                const offsetX = (Math.random() - 0.5) * 20;
+                const duration = Math.random() * 600 + 500;
+                smoke.style.cssText = `
+                    width:${size}px; height:${size}px;
+                    background:${color};
+                    left:${cursorX + offsetX}px;
+                    top:${cursorY}px;
+                    filter: blur(${Math.random()*5+3}px);
+                    animation-duration:${duration}ms;
+                `;
+                document.body.appendChild(smoke);
+                setTimeout(() => smoke.remove(), duration);
+            }
+        });
+
+        // Hover effect on interactive elements
+        const interactiveEls = document.querySelectorAll('a, button, input, select, textarea, .venture-card, .service-card');
+        interactiveEls.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    }
+
+
     const preloader = document.getElementById('preloader');
     const progressBar = document.getElementById('preloader-progress');
 

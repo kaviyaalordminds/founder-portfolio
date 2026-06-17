@@ -1221,7 +1221,7 @@ body {
     .hero-section {
         min-height: auto;
         height: auto;
-        padding: 80px 0 40px;
+        padding: 65px 0 20px;
     }
     
     .hero-section .row.align-items-center {
@@ -1230,7 +1230,7 @@ body {
     
     .hero-content {
         text-align: center;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
     
     .hero-title {
@@ -1246,7 +1246,7 @@ body {
     }
     
     .chapter-label {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     
     .btn-custom {
@@ -1256,8 +1256,8 @@ body {
     }
     
     .hero-image-mobile {
-        max-width: 180px;
-        margin: 1.5rem auto;
+        max-width: 160px;
+        margin: 1rem auto;
     }
     
     .hero-founder-img-mobile {
@@ -1292,7 +1292,7 @@ body {
 /* Small Mobile (< 576px) */
 @media (max-width: 575px) {
     .hero-section {
-        padding: 70px 0 30px;
+        padding: 60px 0 15px;
     }
     
     .hero-title {
@@ -2678,8 +2678,169 @@ body {
 }
 
 /* ============================================
-   ENHANCED CONTACT SECTION
+   SMOKY CURSOR EFFECT
    ============================================ */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(59, 130, 246, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    mix-blend-mode: screen;
+}
+
+.custom-cursor.hovering {
+    width: 40px;
+    height: 40px;
+    border-color: rgba(6, 182, 212, 0.9);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.smoke-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    animation: smokeRise linear forwards;
+}
+
+@keyframes smokeRise {
+    0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(0.4); }
+    40%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translate(-50%, calc(-50% - 60px)) scale(1.8); }
+}
+
+/* ============================================
+   CONTACT SECTION - BLACK BACKGROUND
+   ============================================ */
+#contact {
+    background: #000000 !important;
+    position: relative;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#contact > .container {
+    position: relative;
+    z-index: 1;
+}
+
+#contact .contact-info-card {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.08);
+}
+
+#contact .contact-form-wrapper {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(59,130,246,0.15);
+}
+
+#contact .form-control-custom {
+    background: rgba(255,255,255,0.05);
+}
+
+#contact .form-control-custom:focus + label,
+#contact .form-control-custom:not(:placeholder-shown) + label {
+    background: #000000;
+}
+
+#contact .social-connect-wrapper {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.07);
+}
+
+#contact .book-meeting-banner {
+    background: rgba(59,130,246,0.06);
+}
+
+/* ============================================
+   STAY UPDATED (NEWSLETTER) - 3D BACKGROUND
+   ============================================ */
+.footer-newsletter-row {
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-3d-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    perspective: 600px;
+    overflow: hidden;
+}
+
+.newsletter-3d-cube {
+    position: absolute;
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    background: rgba(59, 130, 246, 0.03);
+    animation: newsletter3dFloat linear infinite;
+    transform-style: preserve-3d;
+}
+
+.newsletter-3d-cube:nth-child(1)  { width:55px; height:55px; top:10%; left:5%;  animation-duration:12s; animation-delay:0s;   border-color:rgba(59,130,246,0.2); }
+.newsletter-3d-cube:nth-child(2)  { width:35px; height:35px; top:60%; left:8%;  animation-duration:17s; animation-delay:2s;   border-color:rgba(6,182,212,0.15); }
+.newsletter-3d-cube:nth-child(3)  { width:70px; height:70px; top:20%; left:88%; animation-duration:14s; animation-delay:1s;   border-color:rgba(16,185,129,0.15); }
+.newsletter-3d-cube:nth-child(4)  { width:45px; height:45px; top:70%; left:85%; animation-duration:19s; animation-delay:3s;   border-color:rgba(59,130,246,0.18); }
+.newsletter-3d-cube:nth-child(5)  { width:28px; height:28px; top:45%; left:3%;  animation-duration:10s; animation-delay:0.5s; border-color:rgba(6,182,212,0.12); }
+.newsletter-3d-cube:nth-child(6)  { width:60px; height:60px; top:80%; left:50%; animation-duration:15s; animation-delay:4s;   border-color:rgba(16,185,129,0.12); }
+.newsletter-3d-cube:nth-child(7)  { width:40px; height:40px; top:5%;  left:50%; animation-duration:13s; animation-delay:1.5s; border-color:rgba(59,130,246,0.15); }
+.newsletter-3d-cube:nth-child(8)  { width:50px; height:50px; top:35%; left:92%; animation-duration:16s; animation-delay:2.5s; border-color:rgba(6,182,212,0.18); }
+
+@keyframes newsletter3dFloat {
+    0%   { transform: translateY(0px)   rotateX(0deg)   rotateY(0deg)   rotateZ(0deg); }
+    25%  { transform: translateY(-25px) rotateX(45deg)  rotateY(30deg)  rotateZ(15deg); }
+    50%  { transform: translateY(-12px) rotateX(90deg)  rotateY(90deg)  rotateZ(45deg); }
+    75%  { transform: translateY(-35px) rotateX(135deg) rotateY(180deg) rotateZ(90deg); }
+    100% { transform: translateY(0px)   rotateX(180deg) rotateY(360deg) rotateZ(180deg); }
+}
+
+.newsletter-3d-grid {
+    position: absolute;
+    width: 200%; height: 200%;
+    top: -50%; left: -50%;
+    background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: newsletterGridShift 20s linear infinite;
+    transform: perspective(400px) rotateX(55deg);
+}
+
+@keyframes newsletterGridShift {
+    0%   { transform: perspective(400px) rotateX(55deg) translateY(0); }
+    100% { transform: perspective(400px) rotateX(55deg) translateY(40px); }
+}
+
+.footer-newsletter-row > .col-lg-8 {
+    position: relative;
+    z-index: 1;
+}
+
+.newsletter-box {
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.03) !important;
+    border-color: rgba(59,130,246,0.2) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 0 40px rgba(59,130,246,0.03);
+}
+
+
 .contact-info-wrapper {
     display: flex;
     flex-direction: column;
