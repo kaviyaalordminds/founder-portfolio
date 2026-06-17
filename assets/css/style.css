@@ -533,7 +533,7 @@ body {
 
 .navbar-toggler:focus {
     box-shadow: none;
-    outline: 1px solid rgba(59, 130, 246, 0.3);
+    outline: 1px solid rgba(160, 185, 225, 0.3);
     border-radius: 4px;
 }
 
@@ -3397,7 +3397,7 @@ select.form-control-custom option {
         width: 45px;
         height: 45px;
         bottom: 20px;
-        left: 20px;
+        right: 20px;
     }
     
     .back-to-top-progress {
@@ -3766,7 +3766,7 @@ select.form-control-custom option {
         width: 40px;
         height: 40px;
         bottom: 15px;
-        left: 15px;
+        right: 15px;
     }
     
     .back-to-top svg {
