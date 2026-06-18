@@ -1,28 +1,16 @@
 $(document).ready(function() {
-    // ==================== THEME TOGGLE ====================
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeToggle.style.transform = 'rotate(360deg)';
-            setTimeout(() => { themeToggle.style.transform = ''; }, 400);
-        });
-    }
-
-    // ==================== PRELOADER THEME SYNC & ANIMATION ====================
+    // ==================== PRELOADER ANIMATION ====================
     const preloader = document.getElementById('preloader');
     const progressBar = document.getElementById('preloader-progress');
 
-    if (preloader) {
-        preloader.style.background = savedTheme === 'light' ? '#f8f9fa' : '#0a0a0a';
+    // ==================== DYNAMIC CALENDAR ICON ====================
+    const calMonthLabel = document.getElementById('calMonthLabel');
+    const calDateLabel = document.getElementById('calDateLabel');
+    if (calMonthLabel && calDateLabel) {
+        const now = new Date();
+        const monthNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+        calMonthLabel.textContent = monthNames[now.getMonth()];
+        calDateLabel.textContent = now.getDate();
     }
 
     let progress = 0;
@@ -552,36 +540,8 @@ $(document).ready(function() {
         });
     });
 
-    // ==================== BOOK MEETING BUTTON HANDLER ====================
-    const bookMeetingBtns = document.querySelectorAll('.book-meeting-banner .btn');
-    bookMeetingBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
-                e.preventDefault();
-                const modal = document.createElement('div');
-                modal.className = 'meeting-modal';
-                modal.style.cssText = `
-                    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-                    display: flex; align-items: center; justify-content: center;
-                    z-index: 10000; backdrop-filter: blur(10px);
-                `;
-                modal.innerHTML = `
-                    <div style="
-                        background: var(--card-bg); border: 1px solid var(--border-color);
-                        border-radius: 24px; padding: 3rem; max-width: 450px; text-align: center;
-                    ">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">&#128197;</div>
-                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Schedule a Meeting</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Our calendar integration is being set up. Please use the contact form below to book a time.</p>
-                        <a href="#contact" class="btn btn-primary-custom btn-custom" style="text-decoration: none; margin-right: 10px;" onclick="document.querySelector('.meeting-modal').remove()">Go to Contact</a>
-                        <button class="btn btn-outline-custom btn-custom" style="cursor: pointer;" onclick="this.closest('.meeting-modal').remove()">Close</button>
-                    </div>
-                `;
-                modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-                document.body.appendChild(modal);
-            }
-        });
-    });
+    // ==================== BOOK MEETING BUTTON - CALENDLY LINK ====================
+    // Button now links directly to Calendly via href — no modal needed.
 
     // ==================== VENTURE BADGE TOOLTIPS ====================
     const ventureBadges = document.querySelectorAll('.venture-badge');
