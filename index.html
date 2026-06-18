@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,6 +144,11 @@
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 </ul>
                 <a href="#contact" class="btn btn-primary-custom btn-custom ms-lg-3 mt-2 mt-lg-0">Get in Touch</a>
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light theme">
+                    <span class="theme-icon sun-icon">&#9728;</span>
+                    <span class="theme-icon moon-icon">&#9790;</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -455,6 +460,7 @@
         </div>
     </section>
 
+    
     <!-- ==================== VISION & MISSION ==================== -->
     <section class="section-padding" id="vision">
         <div class="container">
@@ -853,31 +859,67 @@
                 </div>
             </div>
             <div class="row g-4 align-items-stretch">
+                <!-- NEW INFOGRAPHIC CONTACT DESIGN -->
                 <div class="col-lg-5 reveal">
-                    <div class="contact-info-wrapper">
-                        <div class="contact-info-card">
-                            <div class="contact-info-icon">&#128231;</div>
-                            <h4>Email</h4>
-                            <a href="mailto:naveenkumar@lordminds.com">naveenkumar@lordminds.com</a>
-                            <span class="contact-response">Typically responds within 24h</span>
+                    <div class="contact-infographic-wrapper">
+                        <div class="contact-infographic-header">
+                            <div class="contact-infographic-avatar">
+                                <div class="contact-avatar-ring ring-1"></div>
+                                <div class="contact-avatar-ring ring-2"></div>
+                                <div class="contact-avatar-ring ring-3"></div>
+                                <div class="contact-avatar-img">
+                                    <img src="assets/images/prof.jpeg" alt="Naveenkumar Samiyappan">
+                                </div>
+                            </div>
+                            <h4 class="contact-infographic-name">Naveenkumar Samiyappan</h4>
+                            <p class="contact-infographic-role">Founder & CEO</p>
+                            <div class="contact-infographic-status">
+                                <span class="status-dot"></span> Available for new projects
+                            </div>
                         </div>
-                        <div class="contact-info-card">
-                            <div class="contact-info-icon">&#128241;</div>
-                            <h4>Phone</h4>
-                            <a href="tel:+919876543210">+91 98765 43210</a>
-                            <span class="contact-response">Mon-Sat, 9AM - 7PM IST</span>
+                        <div class="contact-infographic-cards">
+                            <div class="contact-info-card info-email" data-color="blue">
+                                <div class="info-card-glow"></div>
+                                <div class="info-card-icon">&#128231;</div>
+                                <div class="info-card-content">
+                                    <h5>Email</h5>
+                                    <a href="mailto:naveenkumar@lordminds.com">naveenkumar@lordminds.com</a>
+                                </div>
+                                <div class="info-card-pulse"></div>
+                            </div>
+                            <div class="contact-info-card info-phone" data-color="cyan">
+                                <div class="info-card-glow"></div>
+                                <div class="info-card-icon">&#128241;</div>
+                                <div class="info-card-content">
+                                    <h5>Phone</h5>
+                                    <a href="tel:+919876543210">+91 98765 43210</a>
+                                </div>
+                                <div class="info-card-pulse"></div>
+                            </div>
+                            <div class="contact-info-card info-location" data-color="green">
+                                <div class="info-card-glow"></div>
+                                <div class="info-card-icon">&#128205;</div>
+                                <div class="info-card-content">
+                                    <h5>Location</h5>
+                                    <p>Tamil Nadu, India</p>
+                                </div>
+                                <div class="info-card-pulse"></div>
+                            </div>
+                            <div class="contact-info-card info-business" data-color="purple">
+                                <div class="info-card-glow"></div>
+                                <div class="info-card-icon">&#128188;</div>
+                                <div class="info-card-content">
+                                    <h5>Business</h5>
+                                    <a href="mailto:partnerships@lordminds.com">partnerships@lordminds.com</a>
+                                </div>
+                                <div class="info-card-pulse"></div>
+                            </div>
                         </div>
-                        <div class="contact-info-card">
-                            <div class="contact-info-icon">&#128205;</div>
-                            <h4>Location</h4>
-                            <p>Tamil Nadu, India</p>
-                            <span class="contact-response">Available for global travel</span>
-                        </div>
-                        <div class="contact-info-card">
-                            <div class="contact-info-icon">&#128188;</div>
-                            <h4>Business Inquiries</h4>
-                            <p>For partnerships & investments</p>
-                            <a href="mailto:partnerships@lordminds.com">partnerships@lordminds.com</a>
+                        <div class="contact-infographic-connectors">
+                            <div class="connector-line connector-1"></div>
+                            <div class="connector-line connector-2"></div>
+                            <div class="connector-line connector-3"></div>
+                            <div class="connector-line connector-4"></div>
                         </div>
                     </div>
                 </div>
