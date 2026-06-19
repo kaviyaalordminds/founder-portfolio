@@ -540,9 +540,6 @@ $(document).ready(function() {
         });
     });
 
-    // ==================== BOOK MEETING BUTTON - CALENDLY LINK ====================
-    // Button now links directly to Calendly via href — no modal needed.
-
     // ==================== VENTURE BADGE TOOLTIPS ====================
     const ventureBadges = document.querySelectorAll('.venture-badge');
     ventureBadges.forEach(badge => {
