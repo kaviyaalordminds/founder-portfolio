@@ -1688,7 +1688,7 @@ html, body {
 
 .timeline-3d-line {
     position: absolute;
-    top: 5.5rem;
+    top: 3.8rem;
     left: 5%;
     right: 5%;
     height: 4px;
@@ -2228,6 +2228,223 @@ html, body {
 .service-link:hover {
     padding-left: 5px;
     filter: brightness(1.2);
+}
+
+/* ============================================
+   BUSINESS CONSULTING SECTION
+   ============================================ */
+.consulting-image-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.consulting-image {
+    width: 100%;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    border: 3px solid var(--border-color);
+    transition: all 0.4s ease;
+    object-fit: cover;
+    height: 420px;
+}
+
+.consulting-image-wrapper:hover .consulting-image {
+    border-color: var(--accent-blue);
+    transform: scale(1.02);
+}
+
+.consulting-image-glow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), var(--accent-green));
+    border-radius: 24px;
+    opacity: 0.3;
+    z-index: 1;
+    filter: blur(20px);
+    transition: all 0.4s ease;
+    animation: glowShift 4s ease-in-out infinite;
+}
+
+.consulting-image-wrapper:hover .consulting-image-glow {
+    opacity: 0.5;
+    top: 15px;
+    left: 15px;
+}
+
+.consulting-content {
+    padding-left: 1rem;
+}
+
+.consulting-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.consulting-feature::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-cyan));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+.consulting-feature:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateX(5px);
+}
+
+.consulting-feature:hover::before {
+    transform: scaleY(1);
+}
+
+.consulting-feature-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.consulting-feature:hover .consulting-feature-icon {
+    transform: scale(1.1) rotate(-5deg);
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    color: white;
+}
+
+.consulting-feature-text h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--text-primary);
+}
+
+.consulting-feature-text p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.consulting-cta {
+    margin-top: 1.5rem;
+}
+
+.consulting-stat-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.consulting-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-green));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.consulting-stat-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.consulting-stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.consulting-stat-number {
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.consulting-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .consulting-content {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    .consulting-image {
+        height: 350px;
+    }
+}
+
+@media (max-width: 767px) {
+    .consulting-image {
+        height: 280px;
+    }
+    .consulting-feature {
+        padding: 1.25rem;
+    }
+    .consulting-feature-text h4 {
+        font-size: 1.05rem;
+    }
+    .consulting-feature-text p {
+        font-size: 0.9rem;
+    }
+    .consulting-stat-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 479px) {
+    .consulting-image {
+        height: 220px;
+    }
+    .consulting-stat-card {
+        padding: 1.5rem 1rem;
+    }
 }
 
 /* ============================================
@@ -3194,7 +3411,6 @@ html, body {
    CONTACT FORM
    ============================================ */
 #contact {
-    background: var(--bg-dark) !important;
     position: relative;
 }
 
