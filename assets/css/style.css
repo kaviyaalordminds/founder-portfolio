@@ -701,7 +701,7 @@ html, body {
     letter-spacing: 3px;
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     margin-bottom: 1.5rem;
     display: block;
@@ -720,10 +720,18 @@ html, body {
     font-style: italic;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     position: relative;
     display: inline-block;
+    padding-right: 0.15em;
+    overflow: visible;
+}
+
+/* Ensure full name shows without clipping */
+.hero-name-full {
+    overflow: visible !important;
+    padding-right: 0.15em;
 }
 
 .hero-title em::after {
@@ -1150,8 +1158,11 @@ html, body {
     font-style: italic;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
+    display: inline-block;
+    padding-right: 0.15em;
+    overflow: visible;
 }
 
 /* ============================================
@@ -1228,7 +1239,6 @@ html, body {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-    color: white;
 }
 
 /* ============================================
@@ -1258,12 +1268,56 @@ html, body {
     display: inline-block;
 }
 
+/* No 3D perspective needed when showing full name */
+.logo-3d-container:has(.logo-fullname) {
+    perspective: none;
+}
+
 .logo-3d {
     display: flex;
     align-items: center;
     gap: 2px;
     transform-style: preserve-3d;
     animation: logoFloat 4s ease-in-out infinite;
+}
+
+/* Full name logo variant — no 3D rotation, pure shimmer only */
+.logo-3d.logo-fullname {
+    gap: 0;
+    animation: none !important;
+    transform: none !important;
+    transform-style: flat;
+}
+
+.logo-3d-container:hover .logo-3d.logo-fullname {
+    animation: none !important;
+    transform: none !important;
+}
+
+.logo-fullname-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(
+        90deg,
+        var(--accent-blue) 0%,
+        var(--accent-cyan) 30%,
+        #a78bfa 55%,
+        var(--accent-cyan) 70%,
+        var(--accent-blue) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text;
+    white-space: nowrap;
+    display: inline-block;
+    animation: brandShimmer 4s linear infinite;
+}
+
+@keyframes brandShimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 .logo-letter {
@@ -1409,7 +1463,7 @@ html, body {
     flex-shrink: 0;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
 }
 
@@ -2069,7 +2123,7 @@ html, body {
     font-weight: 800;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     margin-bottom: 0.5rem;
     line-height: 1;
@@ -2221,7 +2275,7 @@ html, body {
     transition: all 0.3s ease;
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
 }
 
@@ -2395,7 +2449,7 @@ html, body {
     font-weight: 900;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     line-height: 1;
     margin-bottom: 0.5rem;
@@ -2910,7 +2964,7 @@ html, body {
     font-weight: 900;
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     line-height: 1;
     margin-bottom: 0.5rem;
@@ -2994,7 +3048,7 @@ html, body {
     font-size: 6rem;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     font-family: Georgia, serif;
     line-height: 1;
@@ -3009,7 +3063,7 @@ html, body {
 .testimonial-stars {
     background: linear-gradient(135deg, #fbbf24, #f59e0b);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     font-size: 1.2rem;
     letter-spacing: 3px;
@@ -3693,7 +3747,7 @@ select.form-control-custom option {
     font-size: 6rem;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     font-family: Georgia, serif;
     line-height: 1;
@@ -3879,7 +3933,20 @@ select.form-control-custom option {
     font-weight: 800;
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
-    color: var(--text-primary);
+    background: linear-gradient(
+        90deg,
+        var(--accent-blue) 0%,
+        var(--accent-cyan) 30%,
+        #a78bfa 55%,
+        var(--accent-cyan) 70%,
+        var(--accent-blue) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text;
+    display: inline-block;
+    animation: brandShimmer 4s linear infinite;
 }
 
 .footer-text {
@@ -3949,6 +4016,54 @@ select.form-control-custom option {
     transform: scale(1.3);
 }
 
+/* Footer Connect with Icons */
+.footer-links-connect .footer-connect-link {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 0.875rem;
+    transition: all 0.3s ease;
+    font-size: 0.88rem;
+    padding-left: 0;
+}
+
+.footer-links-connect .footer-connect-link.footer-connect-info {
+    cursor: default;
+}
+
+.footer-connect-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.95rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.footer-icon-x {
+    font-style: normal;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.footer-links-connect a.footer-connect-link:hover {
+    color: var(--accent-cyan);
+    padding-left: 4px;
+}
+
+.footer-links-connect a.footer-connect-link:hover .footer-connect-icon {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
 /* Footer Stats */
 .footer-stats-row {
     margin-bottom: 40px;
@@ -3989,7 +4104,7 @@ select.form-control-custom option {
     font-weight: 800;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
     background-clip: text;
     line-height: 1;
     margin-bottom: 0.25rem;
@@ -4862,4 +4977,97 @@ select.form-control-custom option {
     .newsletter-3d-bg {
         display: none;
     }
+}
+/* ============================================
+   BRAND NAME ANIMATION — NAVBAR & FOOTER
+   ============================================ */
+
+/* Navbar hover: faster shimmer + glow burst, NO transform */
+.navbar-brand:hover .logo-fullname-text {
+    animation: brandShimmer 1.5s linear infinite, brandGlow 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.7));
+    transform: none !important;
+}
+
+@keyframes brandGlow {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.5)); }
+    50%       { filter: drop-shadow(0 0 14px rgba(167, 139, 250, 0.9)); }
+}
+
+/* Footer brand hover */
+.footer-brand:hover {
+    animation: brandShimmer 1.5s linear infinite, brandGlow 1.5s ease-in-out infinite;
+    cursor: default;
+}
+
+/* Extra: pulsing underline below footer brand name */
+.footer-brand-wrapper .footer-brand {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.footer-brand-wrapper .footer-brand::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), #a78bfa);
+    background-size: 200% auto;
+    animation: brandShimmer 3s linear infinite;
+    border-radius: 2px;
+}
+
+/* ============================================
+   TEXT VISIBILITY GLOBAL FIXES
+   ============================================ */
+
+/* Protect all gradient text from any color override */
+.chapter-label,
+.section-title em,
+.hero-title em,
+.hero-name-full,
+.logo-fullname-text,
+.footer-brand,
+.value-number,
+.consulting-stat-number,
+.contact-infographic-name {
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* Ensure plain text inside revealed containers stays readable */
+.reveal.active p,
+.reveal.active h1,
+.reveal.active h2,
+.reveal.active h3,
+.reveal.active h4,
+.reveal.active h5,
+.reveal.active h6,
+.reveal.active span:not(.chapter-label):not(.logo-fullname-text),
+.reveal.active a {
+    color: inherit;
+}
+
+/* hero-stat-label and footer text should never go white */
+.hero-stat-label,
+.footer-text,
+.footer-links a,
+.footer-links .footer-connect-link {
+    color: var(--text-secondary) !important;
+}
+
+.hero-stat-number {
+    color: var(--accent-blue) !important;
+}
+
+/* ============================================
+   GLOBAL FIX — em TAG LAST LETTER CLIPPING
+   Italic text with -webkit-background-clip overflows
+   its inline-block box; padding-right + overflow:visible fixes it
+   ============================================ */
+h1 em, h2 em, h3 em, h4 em {
+    display: inline-block;
+    padding-right: 0.15em;
+    overflow: visible;
 }
