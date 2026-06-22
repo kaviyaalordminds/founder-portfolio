@@ -576,4 +576,74 @@ $(document).ready(function() {
             this.setAttribute('aria-expanded', !isExpanded);
         });
     }
+
+    // ==================== Marquee: unified scroll + hover fix (overrides main.js conflicts) ====================
+    (function () {
+        // Wait for main.js to finish attaching its scroll listener first
+        window.addEventListener('load', function () {
+
+            var tracks      = document.querySelectorAll('.marquee-track');
+            var resetTimer  = null;
+            var ticking     = false;
+            var lastY       = window.scrollY;
+            var lastTime    = performance.now();
+            var hoveredTrack = null;
+
+            // Lock in base durations from CSS (before any inline override)
+            var baseDuration = [];
+            tracks.forEach(function (t, i) {
+                // Remove any inline duration main.js may have already set
+                t.style.animationDuration = '';
+                var dur = parseFloat(window.getComputedStyle(t).animationDuration) || 30;
+                baseDuration[i] = dur;
+            });
+
+            function applyDuration(multiplier) {
+                tracks.forEach(function (t, i) {
+                    if (t === hoveredTrack) return; // don't touch paused track
+                    t.style.animationDuration = (baseDuration[i] * multiplier) + 's';
+                });
+            }
+
+            // Scroll handler — keep marquee at SAME speed regardless of scroll
+            window.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+
+                requestAnimationFrame(function () {
+                    var now   = performance.now();
+                    var dt    = Math.max(now - lastTime, 1);
+                    var dy    = Math.abs(window.scrollY - lastY);
+                    var speed = dy / dt; // px/ms
+
+                    // Clamp: very fast scroll slows marquee slightly (max 1.5x slower)
+                    // This prevents the jarring "stuck" feeling without speeding up
+                    var multiplier = 1 + Math.min(speed * 0.3, 0.5);
+                    applyDuration(multiplier);
+
+                    lastY    = window.scrollY;
+                    lastTime = now;
+                    ticking  = false;
+
+                    // Smoothly restore to exactly normal speed after scroll stops
+                    clearTimeout(resetTimer);
+                    resetTimer = setTimeout(function () {
+                        applyDuration(1);
+                    }, 300);
+                });
+            }, { passive: true });
+
+            // Hover: pause on mouse enter, resume on leave
+            tracks.forEach(function (t) {
+                t.addEventListener('mouseenter', function () {
+                    hoveredTrack = t;
+                    t.style.animationPlayState = 'paused';
+                });
+                t.addEventListener('mouseleave', function () {
+                    hoveredTrack = null;
+                    t.style.animationPlayState = 'running';
+                });
+            });
+        });
+    })();
 });
