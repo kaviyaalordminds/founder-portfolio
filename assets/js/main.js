@@ -323,57 +323,57 @@ $(document).ready(function() {
     timelineItems.forEach(item => timelineObserver.observe(item));
 
     // ==================== CONTACT FORM HANDLING ====================
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        // Real-time validation
-        const inputs = contactForm.querySelectorAll('input[required], textarea[required], select[required]');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                this.style.borderColor = !this.value.trim() ? '#ef4444' : '';
-            });
-            input.addEventListener('focus', function() { this.style.borderColor = ''; });
-        });
+    // const contactForm = document.getElementById('contactForm');
+    // if (contactForm) {
+    //     // Real-time validation
+    //     const inputs = contactForm.querySelectorAll('input[required], textarea[required], select[required]');
+    //     inputs.forEach(input => {
+    //         input.addEventListener('blur', function() {
+    //             this.style.borderColor = !this.value.trim() ? '#ef4444' : '';
+    //         });
+    //         input.addEventListener('focus', function() { this.style.borderColor = ''; });
+    //     });
 
-        // Email validation
-        const emailInput = document.getElementById('email');
-        if (emailInput) {
-            emailInput.addEventListener('blur', function() {
-                const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-                if (this.value && !emailRegex.test(this.value)) this.style.borderColor = '#ef4444';
-            });
-        }
+    //     // Email validation
+    //     const emailInput = document.getElementById('email');
+    //     if (emailInput) {
+    //         emailInput.addEventListener('blur', function() {
+    //             const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    //             if (this.value && !emailRegex.test(this.value)) this.style.borderColor = '#ef4444';
+    //         });
+    //     }
 
-        // Phone validation
-        const phoneInput = document.getElementById('phone');
-        if (phoneInput) {
-            phoneInput.addEventListener('input', function() {
-                this.value = this.value.replace(/[^0-9+\\s-]/g, '');
-            });
-        }
+    //     // Phone validation
+    //     const phoneInput = document.getElementById('phone');
+    //     if (phoneInput) {
+    //         phoneInput.addEventListener('input', function() {
+    //             this.value = this.value.replace(/[^0-9+\\s-]/g, '');
+    //         });
+    //     }
 
-        // Submit handler
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.contact-submit-btn');
-            if (!btn) return;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="btn-text">Sending...</span>';
-            btn.disabled = true;
+    //     // Submit handler
+    //     contactForm.addEventListener('submit', function(e) {
+    //         e.preventDefault();
+    //         const btn = this.querySelector('.contact-submit-btn');
+    //         if (!btn) return;
+    //         const originalText = btn.innerHTML;
+    //         btn.innerHTML = '<span class="btn-text">Sending...</span>';
+    //         btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerHTML = '<span class="btn-text">Message Sent!</span> <span class="btn-icon">&#10003;</span>';
-                btn.style.background = 'var(--accent-green)';
-                btn.style.borderColor = 'var(--accent-green)';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.style.borderColor = '';
-                    btn.disabled = false;
-                    this.reset();
-                }, 2000);
-            }, 1500);
-        });
-    }
+    //         setTimeout(() => {
+    //             btn.innerHTML = '<span class="btn-text">Message Sent!</span> <span class="btn-icon">&#10003;</span>';
+    //             btn.style.background = 'var(--accent-green)';
+    //             btn.style.borderColor = 'var(--accent-green)';
+    //             setTimeout(() => {
+    //                 btn.innerHTML = originalText;
+    //                 btn.style.background = '';
+    //                 btn.style.borderColor = '';
+    //                 btn.disabled = false;
+    //                 this.reset();
+    //             }, 2000);
+    //         }, 1500);
+    //     });
+    // }
 
     // ==================== 3D DEPTH CUBE PARALLAX ====================
     const depthCubes = document.querySelectorAll('.depth-cube');
